@@ -15,7 +15,7 @@ namespace Eat_Well.DAL.Models
         public int CategoryId { get; set; }
         public string ProductName { get; set; }
         public string Photo { get; set; }
-        public string Desciption { get; set; }
+        public string Description { get; set; }
         public string ProductSlug { get; set; }
         public bool IsActive { get; set; }
 

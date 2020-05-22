@@ -109,7 +109,7 @@ namespace Eat_Well.DAL.Models
             {
                 entity.HasKey(e => e.ProductId);
 
-                entity.Property(e => e.Desciption).HasColumnType("ntext");
+                entity.Property(e => e.Description).HasColumnType("ntext");
 
                 entity.Property(e => e.Photo).HasMaxLength(255);
 
