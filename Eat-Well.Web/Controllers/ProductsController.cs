@@ -11,6 +11,7 @@ namespace Eat_Well.Web.Controllers
     using DAL.Models;
     using Common.Req;
     using Common.Rsp;
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -20,6 +21,7 @@ namespace Eat_Well.Web.Controllers
             _svc = new ProductsSvc();
         }
 
+        //Get Method trả về giá trị của 1 Product khi truyền vào 1 ProductId.
         [HttpGet("{Id}")]
         public IActionResult getProductById(int Id)
         {
@@ -28,7 +30,10 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        [HttpGet]
+        //Trả về tất cả Product
+        //Get Method trả về body và head.
+        //Head Method trả về head.
+        [HttpGet, HttpHead]
         public IActionResult getAllProducts()
         {
             var res = new SingleRsp();
@@ -36,6 +41,8 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        //Post Method gửi yêu cầu đến sever.
+        //Create Product.
         [HttpPost]
         public IActionResult CreateProduct([FromBody]ProductsReq req)
         {
@@ -43,6 +50,8 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        //Put Method cập nhật và ghi đè.
+        //Update Product.
         [HttpPut]
         public IActionResult UpdateProduct([FromBody]ProductsReq req)
         {
@@ -50,12 +59,28 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        //Detele Method xóa.
+        //Delete Product.
         [HttpDelete]
-        public IActionResult RemoveProduct([FromBody]ProductsReq req)
+        public bool RemoveProduct(int id)
         {
-            var res = _svc.RemoveProduct(req);
-            return Ok(res);
+            EatWellDBContext db = new EatWellDBContext();
+            //lấy product tồn tại ra
+            Products product = db.Products.FirstOrDefault(x => x.ProductId == id);
+            if (product == null) return false;
+            //xóa product
+            db.Products.Remove(product);
+            // lưu thay đổi 
+            db.SaveChanges(); 
+            return true;
         }
+        //[HttpDelete]
+        //public IActionResult RemoveProduct([FromBody]ProductsReq req)
+        //{
+        //    var res = _svc.RemoveProduct(req);
+        //    return Ok(res);
+        //}
+
 
         private readonly ProductsSvc _svc;
     }
