@@ -41,6 +41,28 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        //Truyền vào 2 tham số page và size.
+        //Get method trả về danh sách Product có phân trang.
+        [HttpGet("pagination")]
+        public IActionResult GetAllProductWithPagination(int page, int size)
+        {
+            EatWellDBContext db = new EatWellDBContext();
+            var pro = db.Products.ToList();
+            var offset = (page - 1) * size;
+            var total = pro.Count();
+            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+            var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
+            var res = new
+            {
+                Data = data,
+                TotalRecord = total,
+                TotalPage = totalpage,
+                Page = page,
+                Size = size
+            }; ;
+            return Ok(res);
+        }
+
         //Post Method gửi yêu cầu đến sever.
         //Create Product.
         [HttpPost]
@@ -74,12 +96,15 @@ namespace Eat_Well.Web.Controllers
             db.SaveChanges(); 
             return true;
         }
+
         //[HttpDelete]
         //public IActionResult RemoveProduct([FromBody]ProductsReq req)
         //{
         //    var res = _svc.RemoveProduct(req);
         //    return Ok(res);
         //}
+
+    
 
 
         private readonly ProductsSvc _svc;
