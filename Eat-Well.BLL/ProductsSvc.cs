@@ -5,6 +5,7 @@ using Eat_Well.DAL;
 using Eat_Well.DAL.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Eat_Well.BLL
@@ -103,20 +104,43 @@ namespace Eat_Well.BLL
         //===========================================================
         #region -- Delete Product --
 
-        public SingleRsp RemoveProduct(ProductsReq pro)
-        {
-            var res = new SingleRsp();
-            Products products = new Products();
-            products.ProductId = pro.ProductId;
-            products.CategoryId = pro.CategoryId;
-            products.ProductName = pro.ProductName;
-            products.Photo = pro.Photo;
-            products.Description = pro.Description;
-            products.ProductSlug = pro.ProductSlug;
-            products.IsActive = pro.IsActive;
-            res = _rep.RemoveProduct(products);
-            return res;
-        }
+        //public SingleRsp RemoveProduct(ProductsReq pro)
+        //{
+        //    var res = new SingleRsp();
+        //    Products products = new Products();
+        //    products.ProductId = pro.ProductId;
+        //    products.CategoryId = pro.CategoryId;
+        //    products.ProductName = pro.ProductName;
+        //    products.Photo = pro.Photo;
+        //    products.Description = pro.Description;
+        //    products.ProductSlug = pro.ProductSlug;
+        //    products.IsActive = pro.IsActive;
+        //    res = _rep.RemoveProduct(products);
+        //    return res;
+        //}
+        #endregion
+
+        #region -- Search Product --
+        //public object SearchProduct(int page, int size)
+        //{
+        //    EatWellDBContext db = new EatWellDBContext();
+        //    var pro = db.Products.ToList();
+
+        //    var offset = (page - 1) * size;
+        //    var total = pro.Count();
+        //    int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+        //    var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
+
+        //    var res = new
+        //    {
+        //        Data = data,
+        //        TotalRecord = total,
+        //        TotalPage = totalpage,
+        //        Page = page,
+        //        Size = size
+        //    };
+        //    return res;
+        //}
         #endregion
     }
 }
