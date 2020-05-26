@@ -1,6 +1,6 @@
 # Eat Well Vietnamese Food Website
 
-My assignment for Information Security.
+Assignment for Database Programming 🪐.
 
 ## Features
 
