@@ -120,27 +120,25 @@ namespace Eat_Well.BLL
         //}
         #endregion
 
-        #region -- Search Product --
-        //public object SearchProduct(int page, int size)
-        //{
-        //    EatWellDBContext db = new EatWellDBContext();
-        //    var pro = db.Products.ToList();
-
-        //    var offset = (page - 1) * size;
-        //    var total = pro.Count();
-        //    int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-        //    var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
-
-        //    var res = new
-        //    {
-        //        Data = data,
-        //        TotalRecord = total,
-        //        TotalPage = totalpage,
-        //        Page = page,
-        //        Size = size
-        //    };
-        //    return res;
-        //}
+        #region -- Get Product --
+        public object GetAllProductWithPagination(int page, int size)
+        {
+            EatWellDBContext db = new EatWellDBContext();
+            var pro = db.Products.ToList();
+            var offset = (page - 1) * size;
+            var total = pro.Count();
+            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+            var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
+            var res = new
+            {
+                Data = data,
+                TotalRecord = total,
+                TotalPage = totalpage,
+                Page = page,
+                Size = size
+            };
+            return res;
+        }
         #endregion
     }
 }
