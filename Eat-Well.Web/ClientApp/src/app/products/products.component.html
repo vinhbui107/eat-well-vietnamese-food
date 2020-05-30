@@ -1,0 +1,53 @@
+<!-- <h1 id="tableLabel">Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!Products"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Products">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Category ID</th>
+      <th>Product Name</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of Products">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.description }}</td>
+    </tr>
+  </tbody>
+</table> -->
+
+<h1 id="tableLabel">Product</h1>
+
+<p *ngIf="!Products"><em>Loading...</em></p>
+
+<table class="table table-striped" aria-labelledby="tableLabel" *ngIf="Products.totalRecord>0">
+  <thead>
+    <tr>
+      <th>Product ID</th>
+      <th>Category ID</th>
+      <th>Product Name</th>
+      <th>Description</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of Products.data">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.productName }}</td>
+      <td>{{ product.description }}</td>
+    </tr>
+  </tbody>
+</table>
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="javascript:void(0);" (click)="Previous()">Previous</a></li>
+  <li class="page-item"><div class="page-link">{{Products.page}}</div></li>
+  <li class="page-item"><a class="page-link" href="javascript:void(0);" (click)="Next()">Next</a></li>
+</ul>
