@@ -46,20 +46,25 @@ namespace Eat_Well.Web.Controllers
         [HttpGet("pagination")]
         public IActionResult GetAllProductWithPagination(int page, int size)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            var pro = db.Products.ToList();
-            var offset = (page - 1) * size;
-            var total = pro.Count();
-            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
-            var res = new
-            {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
-            }; ;
+            //EatWellDBContext db = new EatWellDBContext();
+            //var pro = db.Products.ToList();
+            //var offset = (page - 1) * size;
+            //var total = pro.Count();
+            //int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+            //var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
+            //var res = new
+            //{
+            //    Data = data,
+            //    TotalRecord = total,
+            //    TotalPage = totalpage,
+            //    Page = page,
+            //    Size = size
+            //}; 
+
+            var res = new SingleRsp();
+            var pros = _svc.GetAllProductWithPagination(page, size);
+            res.Data = pros;
+
             return Ok(res);
         }
 
@@ -74,7 +79,7 @@ namespace Eat_Well.Web.Controllers
 
         //Put Method cập nhật và ghi đè.
         //Update Product.
-        [HttpPut]
+        [HttpPut, HttpPatch]
         public IActionResult UpdateProduct([FromBody]ProductsReq req)
         {
             var res = _svc.UpdateProduct(req);
