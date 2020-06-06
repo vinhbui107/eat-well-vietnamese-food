@@ -1,0 +1,10 @@
+.icon-social ul {
+  list-style-type: none;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.icon-social ul a {
+    color: white;
+    padding-left: 10px;
+}
