@@ -46,21 +46,6 @@ namespace Eat_Well.Web.Controllers
         [HttpGet("pagination")]
         public IActionResult GetAllProductWithPagination(int page, int size)
         {
-            //EatWellDBContext db = new EatWellDBContext();
-            //var pro = db.Products.ToList();
-            //var offset = (page - 1) * size;
-            //var total = pro.Count();
-            //int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            //var data = pro.OrderBy(x => x.ProductId).Skip(offset).Take(size).ToList();
-            //var res = new
-            //{
-            //    Data = data,
-            //    TotalRecord = total,
-            //    TotalPage = totalpage,
-            //    Page = page,
-            //    Size = size
-            //}; 
-
             var res = new SingleRsp();
             var pros = _svc.GetAllProductWithPagination(page, size);
             res.Data = pros;
@@ -88,18 +73,14 @@ namespace Eat_Well.Web.Controllers
 
         //Detele Method xóa.
         //Delete Product.
-        [HttpDelete]
-        public bool RemoveProduct(int id)
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteProduct(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            //lấy product tồn tại ra
-            Products product = db.Products.FirstOrDefault(x => x.ProductId == id);
-            if (product == null) return false;
-            //xóa product
-            db.Products.Remove(product);
-            // lưu thay đổi 
-            db.SaveChanges(); 
-            return true;
+            var res = new SingleRsp();
+            var del = _svc.DeleteProduct(Id);
+            res.Data = del;
+            return Ok(res);
+
         }
 
         //[HttpDelete]

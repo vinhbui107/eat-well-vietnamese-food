@@ -1,37 +1,13 @@
-<!-- <h1 id="tableLabel">Weather forecast</h1>
-
-<p>This component demonstrates fetching data from the server.</p>
-
-<p *ngIf="!Products"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="Products">
-  <thead>
-    <tr>
-      <th>Product ID</th>
-      <th>Category ID</th>
-      <th>Product Name</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let product of Products">
-      <td>{{ product.productId }}</td>
-      <td>{{ product.categoryId }}</td>
-      <td>{{ product.productName }}</td>
-      <td>{{ product.description }}</td>
-    </tr>
-  </tbody>
-</table> -->
-
 <h1 id="tableLabel">Product</h1>
 
 <p *ngIf="!Products"><em>Loading...</em></p>
+<button class="btn btn-primary"(click)="openModal(true,null)">Add New Product</button>
 
 <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="Products.totalRecord>0">
   <thead>
     <tr>
       <th>Product ID</th>
-      <th>Category ID</th>
+      <th>Category</th>
       <th>Product Name</th>
       <th>Description</th>
       <th>Action</th>
@@ -40,9 +16,13 @@
   <tbody>
     <tr *ngFor="let product of Products.data">
       <td>{{ product.productId }}</td>
-      <td>{{ product.categoryId }}</td>
+      <td>{{ product.categoryName }}</td>
       <td>{{ product.productName }}</td>
       <td>{{ product.description }}</td>
+      <td>
+        <button class="btn btn-info btn-sm" (click)="openModal(false,product)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.productId)">Delete</button>
+      </td>
     </tr>
   </tbody>
 </table>
@@ -51,3 +31,52 @@
   <li class="page-item"><div class="page-link">{{Products.page}}</div></li>
   <li class="page-item"><a class="page-link" href="javascript:void(0);" (click)="Next()">Next</a></li>
 </ul>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" *ngIf="!isEdit" id="exampleModalLabel">Add New Product</h5>
+        <h5 class="modal-title" *ngIf="isEdit" id="exampleModalLabel">Update Product</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-4">Product Id</div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.productId"></div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-4">Category Id</div>
+          <div class="col-8"><input class="form-control" type="number" [(ngModel)]= "Product.categoryId"></div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-4">Product Name</div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.productName"></div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-4">Product Photo</div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.photo"></div>
+        </div>
+        <br/>
+        <div class="row">
+          <div class="col-4">Product Descripton</div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.description"></div>
+        </div>
+        <br/>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" (click)="saveProduct()">Save</button>
+        <button type="button" class="btn btn-success" (click)="addProduct()">Add</button>
+      </div>
+    </div>
+  </div>
+</div>

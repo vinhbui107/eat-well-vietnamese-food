@@ -102,29 +102,40 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
         #region -- Delete Product --
-
-        //public SingleRsp RemoveProduct(ProductsReq pro)
-        //{
-        //    var res = new SingleRsp();
-        //    Products products = new Products();
-        //    products.ProductId = pro.ProductId;
-        //    products.CategoryId = pro.CategoryId;
-        //    products.ProductName = pro.ProductName;
-        //    products.Photo = pro.Photo;
-        //    products.Description = pro.Description;
-        //    products.ProductSlug = pro.ProductSlug;
-        //    products.IsActive = pro.IsActive;
-        //    res = _rep.RemoveProduct(products);
-        //    return res;
-        //}
-        #endregion
-
-        #region -- Get Product --
-        public object GetAllProductWithPagination(int page, int size)
+        public bool DeleteProduct(int Id)
         {
             EatWellDBContext db = new EatWellDBContext();
-            var pro = db.Products.ToList();
+            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
+            if (product == null) return false;
+            db.Products.Remove(product);
+            db.SaveChangesAsync();
+            return true;
+        }
+        #endregion
+
+        //===========================================================
+        //===========================================================
+
+        #region -- Get Product With Pagination --
+        public object GetAllProductWithPagination(int page, int size)
+        {
+            #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+            var pro = All.Where(x => x.ProductId != null)
+            #pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+               .Join(_rep.Context.Categories, a => a.CategoryId, b => b.CategoryId, (a, b) => new
+               {
+                   a.ProductId,
+                   a.CategoryId,
+                   a.ProductName,
+                   a.Photo,
+                   a.Description,
+                   a.ProductSlug,
+                   a.IsActive,
+                   CategoryName = b.CategoryName,
+               }).OrderBy(x => x.ProductId);
+
             var offset = (page - 1) * size;
             var total = pro.Count();
             int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
@@ -140,6 +151,8 @@ namespace Eat_Well.BLL
             return res;
         }
         #endregion
+        //===========================================================
+        //===========================================================
     }
 }
 
