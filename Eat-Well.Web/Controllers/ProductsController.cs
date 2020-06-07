@@ -83,16 +83,6 @@ namespace Eat_Well.Web.Controllers
 
         }
 
-        //[HttpDelete]
-        //public IActionResult RemoveProduct([FromBody]ProductsReq req)
-        //{
-        //    var res = _svc.RemoveProduct(req);
-        //    return Ok(res);
-        //}
-
-
-
-
         private readonly ProductsSvc _svc;
     }
 }
