@@ -20,6 +20,7 @@ namespace Eat_Well.Web.Controllers
             _svc = new CategoriesSvc();
         }
 
+        // Get Method: get category with ID
         [HttpGet("{Id}")]
         public IActionResult getCategoryById(int Id)
         {
@@ -28,6 +29,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        // Get Method: get all categories
         [HttpGet]
         public IActionResult getAllCategories()
         {
@@ -36,55 +38,43 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        // Get Method: get category with pagination
         [HttpGet("pagination")]
-        public IActionResult GetAllProductWithPagination(int page, int size)
+        public IActionResult GetAllCategoryWithPagination(int page, int size)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            var cate = db.Categories.ToList();
-            var offset = (page - 1) * size;
-            var total = cate.Count();
-            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = cate.OrderBy(x => x.CategoryId).Skip(offset).Take(size).ToList();
-            var res = new
-            {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
-            };
-            
+            var res = new SingleRsp();
+            var pros = _svc.GetAllCategoriesWithPagination(page, size);
+            res.Data = pros;
+
             return Ok(res);
         }
 
+        // Post Method: create a new Category
         [HttpPost]
-        public IActionResult CreateProduct([FromBody]CategoriesReq req)
+        public IActionResult CreateCategory([FromBody]CategoriesReq req)
         {
             var res = _svc.CreateCategory(req);
             return Ok(res);
         }
 
-        [HttpPut]
-        public IActionResult UpdateProduct([FromBody]CategoriesReq req)
+        // Patch Method: Update a part of Category
+        [HttpPut, HttpPatch]
+        public IActionResult UpdateCategory([FromBody]CategoriesReq req)
         {
             var res = _svc.UpdateCategory(req);
             return Ok(res);
         }
 
-        [HttpDelete]
-        public bool RemoveCategory(int id)
+        // Delete Method: Delete all Category
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteCategory(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            Categories category = db.Categories.FirstOrDefault(x => x.CategoryId == id);
-            
-            if (category == null) return false;
-            
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            
-            return true;
-        }
+            var res = new SingleRsp();
+            var del = _svc.DeleteCategory(Id);
+            res.Data = del;
+            return Ok(res);
 
+        }
         private readonly CategoriesSvc _svc;
     }
 }
