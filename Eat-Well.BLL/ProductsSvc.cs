@@ -104,16 +104,12 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Delete Product --
-        public bool DeleteProduct(int Id)
+        public object DeleteProduct(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
-            if (product == null) return false;
-            db.Products.Remove(product);
-            db.SaveChangesAsync();
-            return true;
+            return _rep.DeleteProduct(Id);
         }
         #endregion
+
 
         //===========================================================
         //===========================================================
@@ -134,7 +130,20 @@ namespace Eat_Well.BLL
                    a.ProductSlug,
                    a.IsActive,
                    CategoryName = b.CategoryName,
-               }).OrderBy(x => x.ProductId);
+               })
+               //.Join(_rep.Context.ProductOptions, a => a.ProductId, b => b.ProductId, (a, b) => new
+               //{
+               //    a.ProductId,
+               //    a.CategoryId,
+               //    a.ProductName,
+               //    a.Photo,
+               //    a.Description,
+               //    a.ProductSlug,
+               //    a.IsActive,
+               //    a.CategoryName,
+               //    Price = b.Price,
+               //})
+               .OrderBy(x => x.ProductId);
 
             var offset = (page - 1) * size;
             var total = pro.Count();

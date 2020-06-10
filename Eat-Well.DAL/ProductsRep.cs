@@ -107,27 +107,14 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         #region -- Delete Product --
-        public SingleRsp RemoveProduct(Products pro)
+        public bool DeleteProduct(int Id)
         {
-            var res = new SingleRsp();
-            using (var context = new EatWellDBContext())
-            {
-                using (var tran = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        var t = context.Products.Remove(pro);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tran.Rollback();
-                        res.SetError(ex.StackTrace);
-                    }
-                }
-            }
-            return res;
+            EatWellDBContext db = new EatWellDBContext();
+            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
+            if (product == null) return false;
+            db.Products.Remove(product);
+            db.SaveChangesAsync();
+            return true;
         }
         #endregion
         //=================================================================
