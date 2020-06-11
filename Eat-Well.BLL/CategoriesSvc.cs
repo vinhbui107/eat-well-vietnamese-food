@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 
@@ -56,19 +57,20 @@ namespace Eat_Well.BLL
             return res;
         }
         #endregion
+        //===========================================================
+        //===========================================================
 
         #region -- Methods --
-
         /// <summary>
         /// Initialize
         /// </summary>
         public CategoriesSvc() { }
 
-
         #endregion
+        //===========================================================
+        //===========================================================
 
-        #region -- Create Product --
-
+        #region -- Create Category --
         public SingleRsp CreateCategory(CategoriesReq cate)
         {
             var res = new SingleRsp();
@@ -82,8 +84,8 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
-        #region -- Update Product --
 
+        #region -- Update Category --
         public SingleRsp UpdateCategory(CategoriesReq cate)
         {
             var res = new SingleRsp();
@@ -97,20 +99,43 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
-        #region -- Delete Product --
 
-        public SingleRsp RemoveCategory(CategoriesReq cate)
+        #region -- Delete Category --
+        public bool DeleteCategory(int Id)
         {
-            var res = new SingleRsp();
-            Categories categories = new Categories();
-            categories.CategoryId = cate.CategoryId;
-            categories.CategoryName = cate.CategoryName;
-            categories.CategorySlug = cate.CategorySlug;
-            res = _rep.RemoveCategory(categories);
-               return res;
+            EatWellDBContext db = new EatWellDBContext();
+            Categories category = db.Categories.FirstOrDefault(x => x.CategoryId == Id);
+            if (category == null) return false;
+            db.Categories.Remove(category);
+            db.SaveChangesAsync();
+            return true;
         }
         #endregion
+        //===========================================================
+        //===========================================================
 
+        #region -- Get Categories With Pagination --
+        public object GetAllCategoriesWithPagination(int page, int size)
+        {
+            EatWellDBContext db = new EatWellDBContext();
+            var cate = db.Categories.ToList();
+            var offset = (page - 1) * size;
+            var total = cate.Count();
+            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+            var data = cate.OrderBy(x => x.CategoryId).Skip(offset).Take(size).ToList();
+            var res = new
+            {
+                Data = data,
+                TotalRecord = total,
+                TotalPage = totalpage,
+                Page = page,
+                Size = size
+            };
 
+            return res;
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
     }
 }
