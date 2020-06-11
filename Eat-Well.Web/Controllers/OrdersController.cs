@@ -32,8 +32,8 @@ namespace Eat_Well.Web.Controllers
         //Trả về tất cả Orders
         //Get Method trả về body và head.
         //Head Method trả về head.
-        [HttpGet, HttpHead]
-        public IActionResult getAllOrder()
+        [HttpGet, HttpHead("{get-all}")]
+        public IActionResult getAllOrders()
         {
             var res = new SingleRsp();
             res.Data = _svc.All;
@@ -43,22 +43,12 @@ namespace Eat_Well.Web.Controllers
         //Truyền vào 2 tham số page và size.
         //Get method trả về danh sách Orders có phân trang.
         [HttpGet("pagination")]
-        public IActionResult GetAllOrderWithPagination(int page, int size)
+        public IActionResult GetAllOrdersWithPagination(int page, int size)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            var pro = db.Orders.ToList();
-            var offset = (page - 1) * size;
-            var total = pro.Count();
-            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = pro.OrderBy(x => x.OrderId).Skip(offset).Take(size).ToList();
-            var res = new
-            {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
-            }; ;
+            var res = new SingleRsp();
+            var pros = _svc.GetAllOrdersWithPagination(page, size);
+            res.Data = pros;
+
             return Ok(res);
         }
 
@@ -71,9 +61,9 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Put Method cập nhật và ghi đè.
+        //Put, Patch Method cập nhật và ghi đè.
         //Update Orders.
-        [HttpPut]
+        [HttpPut, HttpPatch]
         public IActionResult UpdateOrders([FromBody]OrdersReq req)
         {
             var res = _svc.UpdateOrders(req);
@@ -82,19 +72,15 @@ namespace Eat_Well.Web.Controllers
 
         //Detele Method xóa.
         //Delete Orders.
-        [HttpDelete]
-        public bool RemoveOrders(int id)
+        [HttpDelete("{Id}")]
+        public IActionResult DeleteOrders(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            //lấy orders tồn tại ra
-            Orders order = db.Orders.FirstOrDefault(x => x.OrderId == id);
-            if (order == null) return false;
-            //xóa product
-            db.Orders.Remove(order);
-            // lưu thay đổi 
-            db.SaveChanges();
-            return true;
+            var res = new SingleRsp();
+            var del = _svc.DeleteOrders(Id);
+            res.Data = del;
+            return Ok(res);
         }
+
         private readonly OrdersSvc _svc;
     }
 }
