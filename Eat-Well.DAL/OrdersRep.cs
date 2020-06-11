@@ -108,28 +108,18 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         #region -- Delete Orders --
-        public SingleRsp RemoveOrders(Orders ord)
+        public bool DeleteOrders(int Id)
         {
-            var res = new SingleRsp();
-            using (var context = new EatWellDBContext())
-            {
-                using (var tran = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        var t = context.Orders.Remove(ord);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tran.Rollback();
-                        res.SetError(ex.StackTrace);
-                    }
-                }
-            }
-            return res;
+            EatWellDBContext db = new EatWellDBContext();
+            Orders orders = db.Orders.FirstOrDefault(x => x.OrderId == Id);
+            if (orders == null) return false;
+            db.Orders.Remove(orders);
+            db.SaveChangesAsync();
+            return true;
         }
         #endregion
+        //=================================================================
+        //=================================================================
+        //=================================================================
     }
 }
