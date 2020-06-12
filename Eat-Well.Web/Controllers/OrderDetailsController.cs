@@ -32,13 +32,14 @@ namespace Eat_Well.Web.Controllers
         //Trả về tất cả OrderDetails
         //Get Method trả về body và head.
         //Head Method trả về head.
-        [HttpGet]
-        public IActionResult getAllOrderDetails()
-        {
-            var res = new SingleRsp();
-            res.Data = _svc.All;
-            return Ok(res);
-        }
+
+        //[HttpGet]
+        //public IActionResult getAllOrderDetails()
+        //{
+        //    var res = new SingleRsp();
+        //    res.Data = _svc.All;
+        //    return Ok(res);
+        //}
 
         //Truyền vào 2 tham số page và size.
         //Get method trả về danh sách Order có phân trang.
