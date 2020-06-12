@@ -7,8 +7,7 @@
 - Quách Triển Huy       - 1754052040
 - Huỳnh Anh Khoa        - 1754050056
 ## About this project
-- .NET Core API (RESTful API) 
-- Angular 9
+
 ## Features
 - Login and register account.
 - Add to cart and checkout.
