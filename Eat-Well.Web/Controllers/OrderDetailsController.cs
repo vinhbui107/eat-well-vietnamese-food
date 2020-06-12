@@ -43,7 +43,7 @@ namespace Eat_Well.Web.Controllers
 
         //Truyền vào 2 tham số page và size.
         //Get method trả về danh sách Order có phân trang.
-        [HttpGet("pagination")]
+        [HttpGet]
         public IActionResult GetAllOrderDetailsWithPagination(int page, int size)
         {
             var res = new SingleRsp();
