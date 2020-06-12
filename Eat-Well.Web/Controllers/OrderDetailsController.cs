@@ -14,27 +14,27 @@ namespace Eat_Well.Web.Controllers
 
     [Route("api/[controller]")]
     [ApiController]
-    public class OrdersController : ControllerBase
+    public class OrderDetailsController : ControllerBase
     {
-        public OrdersController()
+        public OrderDetailsController()
         {
-            _svc = new OrdersSvc();
+            _svc = new OrderDetailsSvc();
         }
-        //Get Method trả về giá trị của 1 Orders khi truyền vào 1 OrdersId.
+
         [HttpGet("{Id}")]
-        public IActionResult getOrderById(int Id)
+        public IActionResult getOrderDetailsById(int Id)
         {
             var res = new SingleRsp();
             res = _svc.Read(Id);
             return Ok(res);
         }
 
-        //Trả về tất cả Orders
+        //Trả về tất cả OrderDetails
         //Get Method trả về body và head.
         //Head Method trả về head.
 
         //[HttpGet]
-        //public IActionResult getAllOrders()
+        //public IActionResult getAllOrderDetails()
         //{
         //    var res = new SingleRsp();
         //    res.Data = _svc.All;
@@ -42,47 +42,47 @@ namespace Eat_Well.Web.Controllers
         //}
 
         //Truyền vào 2 tham số page và size.
-        //Get method trả về danh sách Orders có phân trang.
-
+        //Get method trả về danh sách Order có phân trang.
         [HttpGet]
-        public IActionResult GetAllOrdersWithPagination(int page, int size)
+        public IActionResult GetAllOrderDetailsWithPagination(int page, int size)
         {
             var res = new SingleRsp();
-            var pros = _svc.GetAllOrdersWithPagination(page, size);
+            var pros = _svc.GetAllOrderDetailsWithPagination(page, size);
             res.Data = pros;
 
             return Ok(res);
         }
 
         //Post Method gửi yêu cầu đến sever.
-        //Create Orders.
+        //Create Order.
         [HttpPost]
-        public IActionResult CreateOrders([FromBody]OrdersReq req)
+        public IActionResult CreateOrdersDetails([FromBody]OrderDetailsReq req)
         {
-            var res = _svc.CreateOrders(req);
+            var res = _svc.CreateOrdersDetails(req);
             return Ok(res);
         }
 
         //Put, Patch Method cập nhật và ghi đè.
-        //Update Orders.
+        //Update ORder.
         [HttpPut]
-        public IActionResult UpdateOrders([FromBody]OrdersReq req)
+        public IActionResult UpdateOrderDetails([FromBody]OrderDetailsReq req)
         {
-            var res = _svc.UpdateOrders(req);
+            var res = _svc.UpdateOrderDetails(req);
             return Ok(res);
         }
 
         //Detele Method xóa.
-        //Delete Orders.
-        [HttpDelete("{Id}")]
-        public IActionResult DeleteOrders(int Id)
+        //Delete Order.
+        [HttpDelete]
+        public IActionResult DeleteOrderDetails(int OrdId, int ProId)
         {
             var res = new SingleRsp();
-            var del = _svc.DeleteOrders(Id);
+            var del = _svc.DeleteOrderDetails(OrdId,ProId);
             res.Data = del;
             return Ok(res);
+
         }
 
-        private readonly OrdersSvc _svc;
+        private readonly OrderDetailsSvc _svc;
     }
 }
