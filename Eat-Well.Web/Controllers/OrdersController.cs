@@ -32,13 +32,14 @@ namespace Eat_Well.Web.Controllers
         //Trả về tất cả Orders
         //Get Method trả về body và head.
         //Head Method trả về head.
-        [HttpGet, HttpHead("{get-all}")]
-        public IActionResult getAllOrders()
-        {
-            var res = new SingleRsp();
-            res.Data = _svc.All;
-            return Ok(res);
-        }
+
+        //[HttpGet]
+        //public IActionResult getAllOrders()
+        //{
+        //    var res = new SingleRsp();
+        //    res.Data = _svc.All;
+        //    return Ok(res);
+        //}
 
         //Truyền vào 2 tham số page và size.
         //Get method trả về danh sách Orders có phân trang.
@@ -63,7 +64,7 @@ namespace Eat_Well.Web.Controllers
 
         //Put, Patch Method cập nhật và ghi đè.
         //Update Orders.
-        [HttpPut, HttpPatch]
+        [HttpPut]
         public IActionResult UpdateOrders([FromBody]OrdersReq req)
         {
             var res = _svc.UpdateOrders(req);
