@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Eat_Well.DAL
 {
-    public class ProductsRep : GenericRep<EatWellDBContext, Products>
+    public class ProductOptionsRep : GenericRep<EatWellDBContext, ProductOptions>
     {
         #region -- Overrides --
 
@@ -17,7 +17,7 @@ namespace Eat_Well.DAL
         /// </summary>
         /// <param name="id">Primary key</param>
         /// <returns>Return the object</returns>
-        public override Products Read(int id)
+        public override ProductOptions Read(int id)
         {
             var res = All.FirstOrDefault(p => p.ProductId == id);
             return res;
@@ -46,12 +46,11 @@ namespace Eat_Well.DAL
 
         #endregion
 
-
         //=================================================================
         //=================================================================
         //=================================================================
-        #region -- Create Product --
-        public SingleRsp CreateProduct(Products pro)
+        #region -- Create ProductOptions --
+        public SingleRsp CreateProductOptions(ProductOptions po)
         {
             var res = new SingleRsp();
             using (var context = new EatWellDBContext())
@@ -60,7 +59,7 @@ namespace Eat_Well.DAL
                 {
                     try
                     {
-                        var t = context.Products.Add(pro);
+                        var t = context.ProductOptions.Add(po);
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -78,8 +77,8 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         //=================================================================
-        #region -- Update Product --
-        public SingleRsp UpdateProduct(Products pro)
+        #region -- Update ProductOptions --
+        public SingleRsp UpdateProductOptions(ProductOptions po)
         {
             var res = new SingleRsp();
             using (var context = new EatWellDBContext())
@@ -88,7 +87,7 @@ namespace Eat_Well.DAL
                 {
                     try
                     {
-                        var t = context.Products.Update(pro);
+                        var t = context.ProductOptions.Update(po);
                         context.SaveChanges();
                         tran.Commit();
                     }
@@ -107,12 +106,12 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         #region -- Delete Product --
-        public bool DeleteProduct(int Id)
+        public bool DeleteProductOptions(int PoId, int OpId)
         {
             EatWellDBContext db = new EatWellDBContext();
-            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
-            if (product == null) return false;
-            db.Products.Remove(product);
+            ProductOptions po = db.ProductOptions.FirstOrDefault(x => x.ProductId == PoId && x.OptionId == OpId);
+            if (po == null) return false;
+            db.ProductOptions.Remove(po);
             db.SaveChangesAsync();
             return true;
         }
@@ -120,5 +119,6 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         //=================================================================
+
     }
 }
