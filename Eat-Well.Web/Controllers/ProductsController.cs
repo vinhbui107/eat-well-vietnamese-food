@@ -23,27 +23,17 @@ namespace Eat_Well.Web.Controllers
 
         //Get Method trả về giá trị của 1 Product khi truyền vào 1 ProductId.
         [HttpGet("{Id}")]
-        public IActionResult getProductById(int Id)
+        public IActionResult getOrderById(int Id)
         {
             var res = new SingleRsp();
-            res = _svc.Read(Id);
-            return Ok(res);
-        }
-
-        //Trả về tất cả Product
-        //Get Method trả về body và head.
-        //Head Method trả về head.
-        [HttpGet, HttpHead]
-        public IActionResult getAllProducts()
-        {
-            var res = new SingleRsp();
-            res.Data = _svc.All;
+            var order = _svc.GetProductById(Id);
+            res.Data = order;
             return Ok(res);
         }
 
         //Truyền vào 2 tham số page và size.
         //Get method trả về danh sách Product có phân trang.
-        [HttpGet("pagination")]
+        [HttpGet]
         public IActionResult GetAllProductWithPagination(int page, int size)
         {
             var res = new SingleRsp();
@@ -64,7 +54,7 @@ namespace Eat_Well.Web.Controllers
 
         //Put, Patch Method cập nhật và ghi đè.
         //Update Product.
-        [HttpPut, HttpPatch]
+        [HttpPut]
         public IActionResult UpdateProduct([FromBody]ProductsReq req)
         {
             var res = _svc.UpdateProduct(req);
