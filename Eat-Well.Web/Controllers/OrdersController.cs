@@ -20,7 +20,10 @@ namespace Eat_Well.Web.Controllers
         {
             _svc = new OrdersSvc();
         }
-        //Get Method trả về giá trị của 1 Orders khi truyền vào 1 OrdersId.
+
+        // RESTful API
+
+        // Get Method: api/Orders/5
         [HttpGet("{Id}")]
         public IActionResult getOrderById(int Id)
         {
@@ -29,21 +32,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Trả về tất cả Orders
-        //Get Method trả về body và head.
-        //Head Method trả về head.
-
-        //[HttpGet]
-        //public IActionResult getAllOrders()
-        //{
-        //    var res = new SingleRsp();
-        //    res.Data = _svc.All;
-        //    return Ok(res);
-        //}
-
-        //Truyền vào 2 tham số page và size.
-        //Get method trả về danh sách Orders có phân trang.
-
+        // Get Method: api/Orders/
         [HttpGet]
         public IActionResult GetAllOrdersWithPagination(int page, int size)
         {
@@ -54,8 +43,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Post Method gửi yêu cầu đến sever.
-        //Create Orders.
+        // Post Method: api/Orders/
         [HttpPost]
         public IActionResult CreateOrders([FromBody]OrdersReq req)
         {
@@ -63,8 +51,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Put, Patch Method cập nhật và ghi đè.
-        //Update Orders.
+        // Put Method: api/Orders/5
         [HttpPut]
         public IActionResult UpdateOrders([FromBody]OrdersReq req)
         {
@@ -72,8 +59,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Detele Method xóa.
-        //Delete Orders.
+        // Delete Method: api/Orders/5
         [HttpDelete("{Id}")]
         public IActionResult DeleteOrders(int Id)
         {
