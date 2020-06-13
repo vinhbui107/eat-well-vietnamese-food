@@ -6,6 +6,7 @@ using Eat_Well.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace Eat_Well.BLL
@@ -104,16 +105,12 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Delete Product --
-        public bool DeleteProduct(int Id)
+        public object DeleteProduct(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
-            if (product == null) return false;
-            db.Products.Remove(product);
-            db.SaveChangesAsync();
-            return true;
+            return _rep.DeleteProduct(Id);
         }
         #endregion
+
 
         //===========================================================
         //===========================================================
@@ -134,7 +131,20 @@ namespace Eat_Well.BLL
                    a.ProductSlug,
                    a.IsActive,
                    CategoryName = b.CategoryName,
-               }).OrderBy(x => x.ProductId);
+               })
+               //.Join(_rep.Context.ProductOptions, a => a.ProductId, b => b.ProductId, (a, b) => new
+               //{
+               //    a.ProductId,
+               //    a.CategoryId,
+               //    a.ProductName,
+               //    a.Photo,
+               //    a.Description,
+               //    a.ProductSlug,
+               //    a.IsActive,
+               //    a.CategoryName,
+               //    Price = b.Price,
+               //})
+               .OrderBy(x => x.ProductId);
 
             var offset = (page - 1) * size;
             var total = pro.Count();
@@ -153,5 +163,80 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
+        public object GetProductById(int id)
+        {
+            var pro = All.Where(x => x.ProductId == id)
+                .Join(_rep.Context.Categories, a => a.CategoryId, b => b.CategoryId, (a, b) => new
+                {
+                    a.ProductId,
+                    a.CategoryId,
+                    a.ProductName,
+                    a.Photo,
+                    a.Description,
+                    a.ProductSlug,
+                    a.IsActive,
+                    CategoryName = b.CategoryName,
+                })
+               .Join(_rep.Context.ProductOptions, a => a.ProductId, b => b.ProductId, (a, b) => new
+               {
+                   a.ProductId,
+                   a.CategoryId,
+                   a.ProductName,
+                   a.Photo,
+                   a.Description,
+                   a.ProductSlug,
+                   a.IsActive,
+                   a.CategoryName,
+                   OptionId= b.OptionId,
+                   Price = b.Price,
+               })
+                .Join(_rep.Context.Options, a => a.OptionId, b => b.OptionId, (a, b) => new
+                {
+                    a.ProductId,
+                    a.CategoryId,
+                    a.ProductName,
+                    a.Photo,
+                    a.Description,
+                    a.ProductSlug,
+                    a.IsActive,
+                    a.CategoryName,
+                    a.OptionId,
+                    a.Price,
+                    opti = b.OptionName,
+                }).OrderBy(x => x.ProductId);
+            return pro;
+        }
+
+
+
+    //    public object GetProductById(int id)
+    //    {
+    //        EatWellDBContext db = new EatWellDBContext();
+        
+    //        var product = (from p in db.Products
+    //                   join c in db.Categories on p.CategoryId equals c.CategoryId
+    //                   join po in db.ProductOptions on p.ProductId equals po.ProductId
+    //                   join o in db.Options on po.OptionId equals o.OptionId
+    //                   where p.ProductId == id
+    //                   group o.OptionName by p.ProductID
+    //                   select new
+    //                   {
+    //                       product_id = p.ProductId,
+    //                       categor_id = c.CategoryName,
+    //                       ProductName = p.ProductName,
+    //                       optionId = o.OptionName,
+    //                       //arrayofTemplates array i want to return
+    //                   }
+    //); ;
+
+    //        return product;
+    //    }
+
+
+
+
+
+
     }
 }
