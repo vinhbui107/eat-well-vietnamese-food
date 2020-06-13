@@ -20,7 +20,9 @@ namespace Eat_Well.Web.Controllers
             _svc = new UsersSvc();
         }
 
-        // Get Method: Get user with ID
+        // RESTful API
+
+        // Get Method: api/Users/5
         [HttpGet("{Id}")]
         public IActionResult getUserById(int Id)
         {
@@ -29,7 +31,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Get Method: Get all categories with pagination
+        // Get Method: api/Users
         [HttpGet]
         public IActionResult GetAllUsersWithPagination(int page, int size)
         {
@@ -40,7 +42,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Post Method: Create a new User
+        // Post Method: api/Users
         [HttpPost]
         public IActionResult CreateUser([FromBody]UsersReq req)
         {
@@ -48,7 +50,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Put Method: Update user
+        // Put Method: api/Users/5
         [HttpPut]
         public IActionResult UpdateUser([FromBody]UsersReq req)
         {
@@ -56,7 +58,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Delete Method: Delete all Category
+        // Delete Method: api/Users/5
         [HttpDelete("{Id}")]
         public IActionResult DeleteUser(int Id)
         {

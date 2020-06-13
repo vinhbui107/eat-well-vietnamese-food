@@ -19,8 +19,10 @@ namespace Eat_Well.Web.Controllers
         {
             _svc = new CategoriesSvc();
         }
+        
+        // RESTful API
 
-        // Get Method: get category with ID
+        // Get method: api/Categories/5
         [HttpGet("{Id}")]
         public IActionResult getCategoryById(int Id)
         {
@@ -29,9 +31,9 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Get Method: get all categories with pagination
+        // Get method: api/Categories
         [HttpGet]
-        public IActionResult GetAllCategoryWithPagination(int page, int size)
+        public IActionResult GetAllCategoriesWithPagination(int page, int size)
         {
             var res = new SingleRsp();
             var pros = _svc.GetAllCategoriesWithPagination(page, size);
@@ -40,7 +42,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Post Method: create a new Category
+        // Post method: api/Categories
         [HttpPost]
         public IActionResult CreateCategory([FromBody]CategoriesReq req)
         {
@@ -48,7 +50,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Put Method: Update a part of Category
+        // Put method: api/Categories/5
         [HttpPut]
         public IActionResult UpdateCategory([FromBody]CategoriesReq req)
         {
@@ -56,7 +58,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Delete Method: Delete all Category
+        // Delete method: api/Categories/5
         [HttpDelete("{Id}")]
         public IActionResult DeleteCategory(int Id)
         {

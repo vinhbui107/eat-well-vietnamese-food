@@ -21,7 +21,9 @@ namespace Eat_Well.Web.Controllers
             _svc = new ProductsSvc();
         }
 
-        //Get Method trả về giá trị của 1 Product khi truyền vào 1 ProductId.
+        // RESTful API
+
+        //Get Method: api/Products/5
         [HttpGet("{Id}")]
         public IActionResult getOrderById(int Id)
         {
@@ -31,8 +33,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Truyền vào 2 tham số page và size.
-        //Get method trả về danh sách Product có phân trang.
+        // Get Method: api/Products
         [HttpGet]
         public IActionResult GetAllProductWithPagination(int page, int size)
         {
@@ -43,8 +44,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Post Method gửi yêu cầu đến sever.
-        //Create Product.
+        // Post Method: api/Products
         [HttpPost]
         public IActionResult CreateProduct([FromBody]ProductsReq req)
         {
@@ -52,8 +52,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Put, Patch Method cập nhật và ghi đè.
-        //Update Product.
+        // Put Method: api/Products/5
         [HttpPut]
         public IActionResult UpdateProduct([FromBody]ProductsReq req)
         {
@@ -61,8 +60,7 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        //Detele Method xóa.
-        //Delete Product.
+        // Delete Method: api/Products/5
         [HttpDelete("{Id}")]
         public IActionResult DeleteProduct(int Id)
         {
