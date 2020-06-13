@@ -29,17 +29,8 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Get Method: get all categories
+        // Get Method: get all categories with pagination
         [HttpGet]
-        public IActionResult getAllCategories()
-        {
-            var res = new SingleRsp();
-            res.Data = _svc.All;
-            return Ok(res);
-        }
-
-        // Get Method: get category with pagination
-        [HttpGet("pagination")]
         public IActionResult GetAllCategoryWithPagination(int page, int size)
         {
             var res = new SingleRsp();
@@ -57,8 +48,8 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
-        // Patch Method: Update a part of Category
-        [HttpPut, HttpPatch]
+        // Put Method: Update a part of Category
+        [HttpPut]
         public IActionResult UpdateCategory([FromBody]CategoriesReq req)
         {
             var res = _svc.UpdateCategory(req);
