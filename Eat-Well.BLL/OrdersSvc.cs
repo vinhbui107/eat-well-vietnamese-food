@@ -74,7 +74,7 @@ namespace Eat_Well.BLL
             orders.OrderTotal = ord.OrderTotal;
             orders.OrderPhone = ord.OrderPhone;
             orders.OrderDate = ord.OrderDate;
-            orders.OrderStatus = ord.OrderStatus;
+            orders.IsCompleted = ord.IsCompleted;
             orders.ShippingAddress = ord.ShippingAddress;
             orders.OrderDescription = ord.OrderDescription;
             res = _rep.CreateOrders(orders);
@@ -95,7 +95,7 @@ namespace Eat_Well.BLL
             orders.OrderTotal = ord.OrderTotal;
             orders.OrderPhone = ord.OrderPhone;
             orders.OrderDate = ord.OrderDate;
-            orders.OrderStatus = ord.OrderStatus;
+            orders.IsCompleted = ord.IsCompleted;
             orders.ShippingAddress = ord.ShippingAddress;
             orders.OrderDescription = ord.OrderDescription;
             res = _rep.UpdateOrders(orders);
@@ -129,7 +129,7 @@ namespace Eat_Well.BLL
                    a.OrderTotal,
                    a.OrderPhone,
                    a.OrderDate,
-                   a.OrderStatus,
+                   a.IsCompleted,
                    a.ShippingAddress,
                    a.OrderDescription,
                    Username = b.Username,
