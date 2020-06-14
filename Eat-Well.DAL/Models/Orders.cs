@@ -13,9 +13,9 @@ namespace Eat_Well.DAL.Models
         public int OrderId { get; set; }
         public int UserId { get; set; }
         public int OrderTotal { get; set; }
-        public int OrderPhone { get; set; }
+        public string OrderPhone { get; set; }
         public DateTime? OrderDate { get; set; }
-        public bool OrderStatus { get; set; }
+        public bool IsCompleted { get; set; }
         public string ShippingAddress { get; set; }
         public string OrderDescription { get; set; }
 
