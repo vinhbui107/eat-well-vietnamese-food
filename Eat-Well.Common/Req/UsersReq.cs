@@ -12,7 +12,7 @@ namespace Eat_Well.Common.Req
         public string FullName { get; set; }
         public string Password { get; set; }
         public string Address { get; set; }
-        public int? Phone { get; set; }
+        public string Phone { get; set; }
         public bool IsAdmin { get; set; }
         public bool IsActive { get; set; }
     }
