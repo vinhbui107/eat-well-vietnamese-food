@@ -25,7 +25,7 @@ namespace Eat_Well.Web.Controllers
 
         //Get Method: api/Products/5
         [HttpGet("{Id}")]
-        public IActionResult getOrderById(int Id)
+        public IActionResult GetProductById(int Id)
         {
             var res = new SingleRsp();
             var order = _svc.GetProductById(Id);
