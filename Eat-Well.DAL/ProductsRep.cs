@@ -45,11 +45,9 @@ namespace Eat_Well.DAL
         /// </summary>
 
         #endregion
-
-
         //=================================================================
         //=================================================================
-        //=================================================================
+        
         #region -- Create Product --
         public SingleRsp CreateProduct(Products pro)
         {
@@ -77,7 +75,7 @@ namespace Eat_Well.DAL
         #endregion
         //=================================================================
         //=================================================================
-        //=================================================================
+
         #region -- Update Product --
         public SingleRsp UpdateProduct(Products pro)
         {
@@ -105,19 +103,34 @@ namespace Eat_Well.DAL
         #endregion
         //=================================================================
         //=================================================================
-        //=================================================================
+
         #region -- Delete Product --
-        public bool DeleteProduct(int Id)
+        public bool DeleteProduct(int id)
         {
             EatWellDBContext db = new EatWellDBContext();
-            Products product = db.Products.FirstOrDefault(x => x.ProductId == Id);
+            Products product = db.Products.FirstOrDefault(x => x.ProductId == id);
+
             if (product == null) return false;
+            
+            // find options of product user want to remove in ProductOptions table
+            // and delete those data record
+            var options_of_product = db.ProductOptions.Where(x => x.ProductId == id).ToList();
+
+            foreach (ProductOptions option_of_product in options_of_product)
+            {
+                // remove option of that product
+                db.ProductOptions.Remove(option_of_product);
+                db.SaveChanges();
+            }
+
+            // we need remove options of product before remove product
+            // now we remove product user want
             db.Products.Remove(product);
+            
             db.SaveChangesAsync();
             return true;
         }
         #endregion
-        //=================================================================
         //=================================================================
         //=================================================================
     }
