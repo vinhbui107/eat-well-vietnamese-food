@@ -27,7 +27,6 @@ namespace Eat_Well.DAL.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=.\\SQLEXPRESS;Initial Catalog=EatWellDB;Persist Security Info=True;User ID=sa;Password=Password123;Pooling=False;MultipleActiveResultSets=False;Encrypt=False;TrustServerCertificate=True;");
             }
         }
@@ -78,6 +77,10 @@ namespace Eat_Well.DAL.Models
                 entity.Property(e => e.OrderDate).HasColumnType("datetime");
 
                 entity.Property(e => e.OrderDescription).HasColumnType("ntext");
+
+                entity.Property(e => e.OrderPhone)
+                    .IsRequired()
+                    .HasMaxLength(20);
 
                 entity.Property(e => e.ShippingAddress).IsRequired();
 
@@ -137,6 +140,8 @@ namespace Eat_Well.DAL.Models
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(30);
+
+                entity.Property(e => e.Phone).HasMaxLength(20);
 
                 entity.Property(e => e.Username)
                     .IsRequired()
