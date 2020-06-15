@@ -1,19 +1,18 @@
-﻿using Eat_Well.Common.BLL;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+using Eat_Well.Common.BLL;
 using Eat_Well.Common.Req;
 using Eat_Well.Common.Rsp;
-using Eat_Well.DAL;
 using Eat_Well.DAL.Models;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
-using Microsoft.Extensions.Caching.Memory;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
+using Eat_Well.DAL;
+
+
 
 namespace Eat_Well.BLL
 {
+    
     public class ProductsSvc : GenericSvc<ProductsRep, Products>
     {
         #region -- Overrides --
@@ -69,6 +68,142 @@ namespace Eat_Well.BLL
         //===========================================================
         //===========================================================
 
+        #region -- Get Product By ID -- 
+        public object GetProductById(int id)
+        {
+
+            var product = from p in _rep.Context.Products
+                          where p.ProductId == id
+                          select new
+                          {
+                              id = p.ProductId,
+                              name = p.ProductName,
+                              /*This category below will return
+                               *
+                               * "category:" {
+                               *      "id": id,
+                               *      "name": name,
+                               * } 
+                               * 
+                               */
+                              category = (from c in _rep.Context.Categories
+                                          where c.CategoryId == p.CategoryId
+                                          select new
+                                          {
+                                              id = c.CategoryId,
+                                              name = c.CategoryName
+                                          }).FirstOrDefault(),
+                              photo = p.Photo,
+                              description = p.Description,
+                              slug = p.ProductSlug,
+                              is_active = p.IsActive,
+                              
+                              /*This options below will return
+                               *
+                               * "options:"[
+                               *              {
+                               *                  "id": id,
+                               *                  "name": name,
+                               *                  "price": price
+                               *              },
+                               *              {
+                               *                  "id": id,
+                               *                  "name": name,
+                               *                  "price": price
+                               *              },
+                               *           ]
+                               * 
+                               */
+                              options = (from o in _rep.Context.Options
+                                         join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
+                                         where p.ProductId == po.ProductId
+                                         select new
+                                         {
+                                             id = o.OptionId,
+                                             name = o.OptionName,
+                                             price = po.Price
+                                         }).ToList()
+                            };
+            return product;
+        }
+        # endregion
+        //===========================================================
+        //===========================================================
+
+        #region -- Get Product With Pagination --
+        public object GetAllProductWithPagination(int page, int size)
+        {
+            var products = from p in _rep.Context.Products
+                          select new
+                          {
+                              id = p.ProductId,
+                              name = p.ProductName,
+                              /*This category below will return
+                               *
+                               * "category:" {
+                               *      "id": id,
+                               *      "name": name,
+                               * } 
+                               * 
+                               */
+                              category = (from c in _rep.Context.Categories
+                                          where c.CategoryId == p.CategoryId
+                                          select new
+                                          {
+                                              id = c.CategoryId,
+                                              name = c.CategoryName
+                                          }).FirstOrDefault(),
+                              photo = p.Photo,
+                              description = p.Description,
+                              slug = p.ProductSlug,
+                              is_active = p.IsActive,
+
+                              /*This options below will return
+                               *
+                               * "options:"[
+                               *              {
+                               *                  "id": id,
+                               *                  "name": name,
+                               *                  "price": price
+                               *              },
+                               *              {
+                               *                  "id": id,
+                               *                  "name": name,
+                               *                  "price": price
+                               *              },
+                               *           ]
+                               * 
+                               */
+                              options = (from o in _rep.Context.Options
+                                         join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
+                                         where p.ProductId == po.ProductId
+                                         select new
+                                         {
+                                             id = o.OptionId,
+                                             name = o.OptionName,
+                                             price = po.Price
+                                         }).ToList()
+                          };
+
+            // pagination
+            var offset = (page - 1) * size;
+            var total = products.Count();
+            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
+            var data = products.OrderBy(x => x.id).Skip(offset).Take(size).ToList();
+            var res = new
+            {
+                data = data,
+                total_record = total,
+                total_page = totalpage,
+                page = page,
+                size = size
+            };
+            return res;
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
+
         #region -- Create Product --
 
         public SingleRsp CreateProduct(ProductsReq pro)
@@ -76,7 +211,7 @@ namespace Eat_Well.BLL
             var res = new SingleRsp();
             Products product = new Products();
 
-            product.CategoryId = pro.id;
+            product.CategoryId = pro.category_id;
             product.ProductName = pro.name;
             product.Photo = pro.photo;
             product.Description = pro.description;
@@ -89,7 +224,7 @@ namespace Eat_Well.BLL
 
             // ProductsReq pro have Options is a list.
             // so we get those options and store it into database.
-            foreach (var po in pro.Options)
+            foreach (var po in pro.options)
             {
                 using (var context = new EatWellDBContext())
                 {
@@ -98,6 +233,7 @@ namespace Eat_Well.BLL
                         try
                         {
                             ProductOptions product_option = new ProductOptions();
+
                             product_option.ProductId = product.ProductId;
                             product_option.OptionId = po.id;
                             product_option.Price = po.price;
@@ -125,40 +261,33 @@ namespace Eat_Well.BLL
         
         #region -- Update Product --
 
-        public SingleRsp UpdateProduct(ProductsReq pro)
+        public SingleRsp UpdateProduct(int id, ProductsReq pro)
         {
             var res = new SingleRsp();
 
-            var product = All.Where(x => x.ProductId == pro.id).FirstOrDefault();
+            var product = All.FirstOrDefault(x => x.ProductId.Equals(id));
 
-            if  (product != null)
+            product.CategoryId = pro.category_id;
+            product.ProductName = pro.name;
+            product.Photo = pro.photo;
+            product.Description = pro.description;
+            product.ProductSlug = pro.slug;
+            product.IsActive = pro.is_active;
+
+            foreach (var po in pro.options)
             {
-                product.CategoryId = pro.id;
-                product.ProductName = pro.name;
-                product.Photo = pro.photo;
-                product.Description = pro.description;
-                product.ProductSlug = pro.slug;
-                product.IsActive = pro.is_active;
+                EatWellDBContext db = new EatWellDBContext();
+                var product_option = new ProductOptions();
 
-                res = _rep.UpdateProduct(product);
-
-                foreach (var po in product.ProductOptions)
-                {
-                    EatWellDBContext db = new EatWellDBContext();
-                    var productoption = new ProductOptions();
-
-                    productoption.ProductId = product.ProductId;
-                    productoption.OptionId = po.OptionId;
-                    productoption.Price = po.Price;
-
-                    db.ProductOptions.Update(productoption);
-                    db.SaveChangesAsync();
-                }
-            }
-            else
-            {
+                product_option.ProductId = product.ProductId;
+                product_option.OptionId = po.id;
+                product_option.Price = po.price;
                 
+                db.ProductOptions.Update(product_option);
+                db.SaveChangesAsync();
             }
+                
+            res = _rep.UpdateProduct(product);
 
             return res;
         }
@@ -167,145 +296,9 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Delete Product --
-        public object DeleteProduct(int Id)
+        public object DeleteProduct(int id)
         {
-            return _rep.DeleteProduct(Id);
-        }
-        #endregion
-        //===========================================================
-        //===========================================================
-
-         #region -- Get Product With Pagination --
-        public object GetAllProductWithPagination(int page, int size)
-        {
-            var products = All.Where(x => x.ProductId != null)
-                .Join(_rep.Context.Categories, a => a.CategoryId, b => b.CategoryId, (a, b) => new
-                {
-                    id = a.ProductId,
-                    name = a.ProductName,
-                    /*This category below will return
-                     *
-                     * "category:" {
-                     *      "id": id,
-                     *      "name": name,
-                     * } 
-                     * 
-                     */
-                    category = (from c in _rep.Context.Categories
-                                where c.CategoryId == a.CategoryId
-                                select new
-                                {
-                                    id = c.CategoryId,
-                                    name = c.CategoryName
-                                }).FirstOrDefault(),
-                    photo = a.Photo,
-                    description = a.Description,
-                    slug = a.ProductSlug,
-                    is_active = a.IsActive,
-
-                    /*This options below will return
-                     *
-                     * "options:"[
-                     *              {
-                     *                  "id": id,
-                     *                  "name": name,
-                     *                  "price": price
-                     *              },
-                     *              {
-                     *                  "id": id,
-                     *                  "name": name,
-                     *                  "price": price
-                     *              },
-                     *           ]
-                     * 
-                     */
-                    options = (from o in _rep.Context.Options
-                               join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
-                               where a.ProductId == po.ProductId
-                               select new
-                               {
-                                   id = o.OptionId,
-                                   name = o.OptionName,
-                                   price = po.Price
-                               }).ToList()
-                }).OrderBy(x => x.id);
-
-            // pagination
-            var offset = (page - 1) * size;
-            var total = products.Count();
-            int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = products.OrderBy(x => x.id).Skip(offset).Take(size).ToList();
-            var res = new
-            {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
-            };
-            return res;
-        }
-        #endregion
-        //===========================================================
-        //===========================================================
-
-        #region -- Get Product By ID -- 
-        public object GetProductById(int id)
-        {
-
-            var product = All.Where(x => x.ProductId == id)
-                .Join(_rep.Context.Categories, a => a.CategoryId, b => b.CategoryId, (a, b) => new
-                {
-                    id = a.ProductId,
-                    name = a.ProductName,
-
-                    /*This category below will return
-                     *
-                     * "category:" {
-                     *      "id": id,
-                     *      "name": name,
-                     * } 
-                     * 
-                     */
-                    category = (from c in _rep.Context.Categories
-                                where c.CategoryId == a.CategoryId
-                                select new { 
-                                    id = c.CategoryId,
-                                    name = c.CategoryName
-                                }).FirstOrDefault(),
-                    photo = a.Photo,
-                    description = a.Description,
-                    slug = a.ProductSlug,
-                    is_active = a.IsActive,
-
-                    /*This options below will return
-                     *
-                     * "options:"[
-                     *              {
-                     *                  "id": id,
-                     *                  "name": name,
-                     *                  "price": price
-                     *              },
-                     *              {
-                     *                  "id": id,
-                     *                  "name": name,
-                     *                  "price": price
-                     *              },
-                     *           ]
-                     * 
-                     */
-                    options = (from o in _rep.Context.Options
-                               join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
-                               where a.ProductId == po.ProductId
-                               select new
-                               {
-                                   id = o.OptionId,
-                                   name = o.OptionName,
-                                   price = po.Price
-                               }).ToList()
-               }).OrderBy(x => x.id);
-
-            return product;
+            return _rep.DeleteProduct(id);
         }
         #endregion
         //===========================================================
