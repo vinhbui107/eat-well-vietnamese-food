@@ -76,12 +76,12 @@ namespace Eat_Well.BLL
             var res = new SingleRsp();
             Products product = new Products();
 
-            product.CategoryId = pro.CategoryId;
-            product.ProductName = pro.ProductName;
-            product.Photo = pro.Photo;
-            product.Description = pro.Description;
-            product.ProductSlug = pro.ProductSlug;
-            product.IsActive = pro.IsActive;
+            product.CategoryId = pro.id;
+            product.ProductName = pro.name;
+            product.Photo = pro.photo;
+            product.Description = pro.description;
+            product.ProductSlug = pro.slug;
+            product.IsActive = pro.is_active;
 
             // we must to save a new product before.
             // if we don't, we will not have productID to do anything.
@@ -99,8 +99,8 @@ namespace Eat_Well.BLL
                         {
                             ProductOptions product_option = new ProductOptions();
                             product_option.ProductId = product.ProductId;
-                            product_option.OptionId = po.OptionId;
-                            product_option.Price = po.Price;
+                            product_option.OptionId = po.id;
+                            product_option.Price = po.price;
 
                             // add a new record in to ProductOptions table
                             var t = context.ProductOptions.Add(product_option);
@@ -129,16 +129,16 @@ namespace Eat_Well.BLL
         {
             var res = new SingleRsp();
 
-            var product = All.Where(x => x.ProductId == pro.ProductId).FirstOrDefault();
+            var product = All.Where(x => x.ProductId == pro.id).FirstOrDefault();
 
             if  (product != null)
             {
-                product.CategoryId = pro.CategoryId;
-                product.ProductName = pro.ProductName;
-                product.Photo = pro.Photo;
-                product.Description = pro.Description;
-                product.ProductSlug = pro.ProductSlug;
-                product.IsActive = pro.IsActive;
+                product.CategoryId = pro.id;
+                product.ProductName = pro.name;
+                product.Photo = pro.photo;
+                product.Description = pro.description;
+                product.ProductSlug = pro.slug;
+                product.IsActive = pro.is_active;
 
                 res = _rep.UpdateProduct(product);
 
@@ -175,7 +175,7 @@ namespace Eat_Well.BLL
         //===========================================================
         //===========================================================
 
-        #region -- Get Product With Pagination --
+         #region -- Get Product With Pagination --
         public object GetAllProductWithPagination(int page, int size)
         {
             var products = All.Where(x => x.ProductId != null)
