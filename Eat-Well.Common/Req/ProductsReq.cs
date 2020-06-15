@@ -15,7 +15,7 @@ namespace Eat_Well.Common.Req
         public string? slug { get; set; }
         public bool is_active { get; set; }
 
-        public List<ProductOptionsReq> Options { get; set; }
+        public List<ProductOptionsReq> options { get; set; }
 
     }
 }
