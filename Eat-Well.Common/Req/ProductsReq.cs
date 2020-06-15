@@ -7,13 +7,13 @@ namespace Eat_Well.Common.Req
 {
     public class ProductsReq
     {
-        public int ProductId { get; set; }
-        public int CategoryId { get; set; }
-        public string ProductName { get; set; }
-        public string? Photo { get; set; }
-        public string? Description { get; set; }
-        public string? ProductSlug { get; set; }
-        public bool IsActive { get; set; }
+        public int id { get; set; }
+        public int category_id { get; set; }
+        public string name { get; set; }
+        public string? photo { get; set; }
+        public string? description { get; set; }
+        public string? slug { get; set; }
+        public bool is_active { get; set; }
 
         public List<ProductOptionsReq> Options { get; set; }
 
