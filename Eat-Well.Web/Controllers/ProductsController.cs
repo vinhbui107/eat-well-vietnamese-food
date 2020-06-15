@@ -28,8 +28,8 @@ namespace Eat_Well.Web.Controllers
         public IActionResult GetProductById(int Id)
         {
             var res = new SingleRsp();
-            var order = _svc.GetProductById(Id);
-            res.Data = order;
+            var product = _svc.GetProductById(Id);
+            res.Data = product;
             return Ok(res);
         }
 
@@ -38,8 +38,8 @@ namespace Eat_Well.Web.Controllers
         public IActionResult GetAllProductWithPagination(int page, int size)
         {
             var res = new SingleRsp();
-            var pros = _svc.GetAllProductWithPagination(page, size);
-            res.Data = pros;
+            var products = _svc.GetAllProductWithPagination(page, size);
+            res.Data = products;
 
             return Ok(res);
         }
