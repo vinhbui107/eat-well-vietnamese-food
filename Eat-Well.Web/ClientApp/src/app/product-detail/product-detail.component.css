@@ -1,8 +1,81 @@
 #gallery{
     display: flex;
     justify-content: space-around;
-    margin: 10%;
+    margin-top: 0%;  
+    position: relative;
+    top: 0;
+    
 }
-.picture{
+.box-price {
+    border: 2px solid #eaeaea;
+    margin-bottom: 50px;
+    width: 1300px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 30px;
+}
+.imgvote{
+    background-color: aquamarine;
+    padding: 5px;
+    margin-bottom: 10px;
+}
 
+.picture{
+    margin-right: 30px;
+}
+.price{
+    margin-left: 5px;
+}
+.form-control{
+    width: 150px;
+}
+.i-select{
+    position: absolute;
+    margin-left: 10px;
+}
+/* food List */
+.foodList h1{
+    margin-top:30px;
+    font-size: 30px;
+    background-color: #00522C;
+    border: black solid 2px;
+    padding: 2px 5px;
+    color: #FFFFF2;
+}
+
+.foodlist-item img{
+    width: 100%; 
+    display: block;
+    margin: 20px auto;
+}
+.foodlist-item h4{
+    color: black;
+    transition: all .2s;
+    margin: 0; 
+}
+.foodlist-item h4:hover{
+    transition: 0.3s;
+    color:#d81a24;
+}
+.foodlist-item p{
+    font-size: 18px;
+    color: grey;
+    margin: 0;
+}
+.foodlist-item i{
+    color: #f9be30;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+.foodlist-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.foodlist-item a:hover{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
 }
