@@ -106,31 +106,20 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
 
-        #region -- Delete Product --
-        public SingleRsp RemoveCategory(Categories cate)
+        #region -- Delete Category --
+        
+        public bool DeleteCategory(int Id)
         {
-            var res = new SingleRsp();
-            using (var context = new EatWellDBContext())
-            {
-                using (var tran = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        var t = context.Categories.Remove(cate);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tran.Rollback();
-                        res.SetError(ex.StackTrace);
-                    }
-                }
-            }
-            return res;
+            EatWellDBContext db = new EatWellDBContext();
+            Categories cate = db.Categories.FirstOrDefault(x => x.CategoryId == Id);
+            if (cate == null) return false;
+            db.Categories.Remove(cate);
+            db.SaveChangesAsync();
+            return true;
         }
         #endregion
-
         #endregion
+
+
     }
 }

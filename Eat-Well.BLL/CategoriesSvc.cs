@@ -75,9 +75,9 @@ namespace Eat_Well.BLL
         {
             var res = new SingleRsp();
             Categories categories = new Categories();
-            categories.CategoryId = cate.CategoryId;
-            categories.CategoryName = cate.CategoryName;
-            categories.CategorySlug = cate.CategorySlug;
+            categories.CategoryId = cate.id;
+            categories.CategoryName = cate.name;
+            categories.CategorySlug = cate.slug;
             res = _rep.CreateCategory(categories);
             return res;
         }
@@ -86,14 +86,14 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Update Category --
-        public SingleRsp UpdateCategory(CategoriesReq cate)
+        public SingleRsp UpdateCategory(int id, CategoriesReq cate)
         {
             var res = new SingleRsp();
-            Categories categories = new Categories();
-            categories.CategoryId = cate.CategoryId;
-            categories.CategoryName = cate.CategoryName;
-            categories.CategorySlug = cate.CategorySlug;
-            res = _rep.UpdateCategory(categories);
+            var cates = All.FirstOrDefault(x => x.CategoryId.Equals(id));
+            cates.CategoryId = cate.id;
+            cates.CategoryName = cate.name;
+            cates.CategorySlug = cate.slug;
+            res = _rep.UpdateCategory(cates);
             return res;
         }
         #endregion
@@ -101,14 +101,9 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Delete Category --
-        public bool DeleteCategory(int Id)
+        public object DeleteCategory(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            Categories category = db.Categories.FirstOrDefault(x => x.CategoryId == Id);
-            if (category == null) return false;
-            db.Categories.Remove(category);
-            db.SaveChangesAsync();
-            return true;
+            return _rep.DeleteCategory(Id);
         }
         #endregion
         //===========================================================
@@ -117,22 +112,120 @@ namespace Eat_Well.BLL
         #region -- Get Categories With Pagination --
         public object GetAllCategoriesWithPagination(int page, int size)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            var cate = db.Categories.ToList();
+            var cate = from c in _rep.Context.Categories
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                       where c.CategoryId != null
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                       select new
+                       {
+                           id = c.CategoryId,
+                           name = c.CategoryName,
+                           slug = c.CategorySlug,
+                       };
             var offset = (page - 1) * size;
             var total = cate.Count();
             int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = cate.OrderBy(x => x.CategoryId).Skip(offset).Take(size).ToList();
+            var data = cate.OrderBy(x => x.id).Skip(offset).Take(size).ToList();
             var res = new
             {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
+                data = data,
+                total_record = total,
+                total_page = totalpage,
+                page = page,
+                size = size
             };
 
             return res;
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
+
+        #region -- Get Category By ID -- 
+        public object GetCategoryById(int id)
+        {
+
+            var user = from c in _rep.Context.Categories
+                       where c.CategoryId == id
+                       select new
+                       {
+                           id = c.CategoryId,
+                           name = c.CategoryName,
+                           slug = c.CategorySlug,
+                           products = (from a in _rep.Context.Categories
+                                       join p in _rep.Context.Products on a.CategoryId equals p.CategoryId
+                                       where c.CategoryId == p.CategoryId
+                                       select new
+                                       {
+                                           id = p.ProductId,
+                                           name = p.ProductName,
+                                           descripton = p.Description,
+                                           //Get category with products
+                                           /*Like this
+                                           *  
+                                           *                                                                           
+                                           * "category:" {
+                                           *               "id": id,
+                                           *               "name": name,
+                                           *                "products": [
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "descripton":
+                                           *                             },
+                                           *
+                                           *                             {
+                                           *                               "id": ,
+                                           *                               "name": "",
+                                           *                               "descripton": "",
+                                           *                             },
+                                           *                           ]
+                                           *             }
+                                           *//////////////////////////////////////
+
+                                           options = (from o in _rep.Context.Options
+                                                      join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
+                                                      where po.ProductId == p.ProductId
+                                                      select new
+                                                      {
+                                                        id = o.OptionId,
+                                                        name = o.OptionName,
+                                                        price = po.Price
+                                                      }).ToList()
+                                         }).ToList()
+                                                                              
+                       };
+                                          //Get Options
+                                          /*Like this
+                                           * 
+                                           * 
+                                           *..........
+                                           * "products": [
+                                           *             {
+                                           *               "id": 
+                                           *               "name": 
+                                           *               "descripton": 
+                                           *               "options" : [
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "price":
+                                           *                             },
+                                           *
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "price":
+                                           *                             }
+                                           *                           ]
+                                           *             },
+                                           *           ]
+                                           *//////////////////////////////
+
+            return user;
+
+
+
         }
         #endregion
         //===========================================================

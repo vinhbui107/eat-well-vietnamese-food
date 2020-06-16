@@ -6,8 +6,8 @@ namespace Eat_Well.Common.Req
 {
     public class CategoriesReq
     {
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public string CategorySlug { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string slug { get; set; }
     }
 }

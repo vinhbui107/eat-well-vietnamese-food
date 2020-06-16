@@ -24,10 +24,12 @@ namespace Eat_Well.Web.Controllers
 
         // Get method: api/Categories/5
         [HttpGet("{Id}")]
+       
         public IActionResult getCategoryById(int Id)
         {
             var res = new SingleRsp();
-            res = _svc.Read(Id);
+            var cate = _svc.GetCategoryById(Id);
+            res.Data = cate;
             return Ok(res);
         }
 
@@ -51,10 +53,10 @@ namespace Eat_Well.Web.Controllers
         }
 
         // Put method: api/Categories/5
-        [HttpPut]
-        public IActionResult UpdateCategory([FromBody]CategoriesReq req)
+        [HttpPut("{Id}")]
+        public IActionResult UpdateCategory(int Id, [FromBody]CategoriesReq req)
         {
-            var res = _svc.UpdateCategory(req);
+            var res = _svc.UpdateCategory(Id, req);
             return Ok(res);
         }
 
