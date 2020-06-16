@@ -1,10 +1,6 @@
 #gallery{
     display: flex;
-    justify-content: space-around;
-    margin-top: 0%;  
-    position: relative;
-    top: 0;
-    
+    justify-content: space-between;  
 }
 .box-price {
     border: 2px solid #eaeaea;
@@ -12,7 +8,8 @@
     width: 1300px;
     margin: 0px;
     padding: 0px;
-    margin-left: 40px;
+    margin-left: 20px;
+    height: 350px;
 }
 .imgvote{
     background-color: #F9F9F9;
@@ -32,6 +29,11 @@
     position: absolute;
     margin-left: 10px ;
 }
+.price{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
 /*button*/
 .button_group{
     display: flex;
@@ -39,7 +41,7 @@
     width: 80%;
     margin: 5px 10%;
     height: 35px !important;
-    font-size: 15px;
+    font-size: 17px;
 }
 .button_group a{
     text-decoration: none !important;
@@ -95,7 +97,7 @@
 	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
 	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
-	background-color:#f24537;
+	background-color:#fa1909;
 	-webkit-border-top-left-radius:0px;
 	-moz-border-radius-topleft:0px;
 	border-top-left-radius:0px;
@@ -171,10 +173,10 @@
 }
 /* food List */
 .foodList{
-    margin-bottom: 50px;
+    margin-top: 50px;
+    margin-bottom: 60px;
 }
 .foodList h1{
-    margin-top:30px;
     font-size: 30px;
     background-color: #00522C;
     border: black solid 2px;
