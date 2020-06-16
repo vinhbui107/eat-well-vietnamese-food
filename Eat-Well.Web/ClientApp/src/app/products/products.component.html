@@ -3,7 +3,7 @@
 <p *ngIf="!Products"><em>Loading...</em></p>
 <button class="btn btn-primary"(click)="openModal(true,null)">Add New Product</button>
 
-<table class="table table-striped" aria-labelledby="tableLabel" *ngIf="Products.totalRecord>0">
+<table class="table table-striped" aria-labelledby="tableLabel" *ngIf="Products.total_record>0">
   <thead>
     <tr>
       <th>Product ID</th>
@@ -15,13 +15,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let product of Products.data">
-      <td>{{ product.productId }}</td>
-      <td>{{ product.categoryName }}</td>
-      <td>{{ product.productName }}</td>
+      <td>{{ product.id }}</td>
+      <td>{{ product.category.name }}</td>
+      <td>{{ product.name }}</td>
       <td>{{ product.description }}</td>
       <td>
-        <button class="btn btn-info btn-sm" (click)="openModal(false,product)">Edit</button>
-        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.productId)">Delete</button>
+        <button class="btn btn-info btn-sm" (click)="openModal(false, product.id)">Edit</button>
+        <button class="btn btn-danger btn-sm" (click)="deleteProduct(product.id)">Delete</button>
       </td>
     </tr>
   </tbody>
@@ -47,17 +47,17 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-4">Product Id</div>
-          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.productId"></div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.id"></div>
         </div>
         <br/>
         <div class="row">
           <div class="col-4">Category Id</div>
-          <div class="col-8"><input class="form-control" type="number" [(ngModel)]= "Product.categoryId"></div>
+          <div class="col-8"><input class="form-control" type="number" [(ngModel)]= "Product.category.id"></div>
         </div>
         <br/>
         <div class="row">
           <div class="col-4">Product Name</div>
-          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.productName"></div>
+          <div class="col-8"><input class="form-control" [(ngModel)]= "Product.name"></div>
         </div>
         <br/>
         <div class="row">
