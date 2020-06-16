@@ -24,10 +24,11 @@ namespace Eat_Well.Web.Controllers
 
         // Get Method: api/Users/5
         [HttpGet("{Id}")]
-        public IActionResult getUserById(int Id)
+        public IActionResult GetUsersById(int Id)
         {
             var res = new SingleRsp();
-            res = _svc.Read(Id);
+            var user = _svc.GetUsersById(Id);
+            res.Data = user;
             return Ok(res);
         }
 
@@ -51,10 +52,10 @@ namespace Eat_Well.Web.Controllers
         }
 
         // Put Method: api/Users/5
-        [HttpPut]
-        public IActionResult UpdateUser([FromBody]UsersReq req)
+        [HttpPut("{id}")]
+        public IActionResult UpdateUser(int id,[FromBody]UsersReq req)
         {
-            var res = _svc.UpdateUser(req);
+            var res = _svc.UpdateUser(id, req);
             return Ok(res);
         }
 
