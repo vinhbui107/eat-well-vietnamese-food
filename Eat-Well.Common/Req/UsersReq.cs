@@ -6,14 +6,14 @@ namespace Eat_Well.Common.Req
 {
     public class UsersReq
     {
-        public int UserId { get; set; }
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string Phone { get; set; }
-        public bool IsAdmin { get; set; }
-        public bool IsActive { get; set; }
+        public int id { get; set; }
+        public string username { get; set; }
+        public string email { get; set; }
+        public string full_name { get; set; }
+        public string password { get; set; }
+        public string address { get; set; }
+        public string phone { get; set; }
+        public bool is_admin { get; set; }
+        public bool is_active { get; set; }
     }
 }
