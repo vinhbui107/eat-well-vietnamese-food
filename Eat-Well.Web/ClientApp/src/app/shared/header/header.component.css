@@ -4,3 +4,39 @@
   top: 0;
   padding: 40px;
 }
+/*dropdown*/
+.dropdown-menu li{
+  padding : 5px 1px;
+  margin-left: 5px;
+  
+}
+.dropdown-menu li a{
+  text-decoration: none;
+  color: rgba(0,0,0,.9);
+}
+
+.dropdown-menu {
+  width: 170px !important;
+}
+.dropdown{
+  position: relative;
+  display: inline-block;  
+}
+/*sub-menu*/
+.dropdown-menu{
+  display: none;
+  position: absolute;
+  background: #f7f3f3;
+  margin-top: -1px;
+  top: 100%;
+  z-index: 999;
+  text-decoration: none;
+}
+.dropdown:hover .dropdown-menu{
+  display: block;
+  text-decoration: none;
+}
+.dropdown-menu li a:hover{
+  color: red;
+  transition: all 0.3s;
+}
