@@ -53,7 +53,7 @@ namespace Eat_Well.Web.Controllers
 
         // Put Method: api/Users/5
         [HttpPut("{Id}")]
-        public IActionResult UpdateUser(int Id,[FromBody]UsersReq req)
+        public IActionResult UpdateUser(int Id, [FromBody]UsersReq req)
         {
             var res = _svc.UpdateUser(Id, req);
             return Ok(res);
