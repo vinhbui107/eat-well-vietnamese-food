@@ -107,27 +107,14 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
         #region -- Delete User --
-        public SingleRsp RemoveUser(Users user)
+        public bool DeleteUser(int Id)
         {
-            var res = new SingleRsp();
-            using (var context = new EatWellDBContext())
-            {
-                using (var tran = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        var t = context.Users.Remove(user);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {
-                        tran.Rollback();
-                        res.SetError(ex.StackTrace);
-                    }
-                }
-            }
-            return res;
+            EatWellDBContext db = new EatWellDBContext();
+            Users user = db.Users.FirstOrDefault(x => x.UserId == Id);
+            if (user == null) return false;
+            db.Users.Remove(user);
+            db.SaveChangesAsync();
+            return true;
         }
         #endregion
         //=================================================================

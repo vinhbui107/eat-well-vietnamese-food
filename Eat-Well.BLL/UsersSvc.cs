@@ -6,6 +6,7 @@ using Eat_Well.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace Eat_Well.BLL
@@ -69,15 +70,15 @@ namespace Eat_Well.BLL
         {
             var res = new SingleRsp();
             Users user = new Users();
-            user.UserId = u.UserId;
-            user.Username = u.Username;
-            user.Password = u.Password;
-            user.Email = u.Email;
-            user.FullName = u.FullName;
-            user.Phone = u.Phone;
-            user.Address = u.Address;
-            user.IsAdmin = u.IsAdmin;
-            user.IsActive = u.IsActive;
+            user.UserId = u.id;
+            user.Username = u.username;
+            user.Password = u.password;
+            user.Email = u.email;
+            user.FullName = u.full_name;
+            user.Phone = u.phone;
+            user.Address = u.address;
+            user.IsAdmin = u.is_admin;
+            user.IsActive = u.is_active;
             res = _rep.CreateUser(user);
             return res;
         }
@@ -86,19 +87,19 @@ namespace Eat_Well.BLL
         //===========================================================
         #region -- Update User --
 
-        public SingleRsp UpdateUser(UsersReq u)
+        public SingleRsp UpdateUser(int id, UsersReq u)
         {
             var res = new SingleRsp();
-            Users user = new Users();
-            user.UserId = u.UserId;
-            user.Username = u.Username;
-            user.Password = u.Password;
-            user.Email = u.Email;
-            user.FullName = u.FullName;
-            user.Phone = u.Phone;
-            user.Address = u.Address;
-            user.IsAdmin = u.IsAdmin;
-            user.IsActive = u.IsActive;
+            var user = All.FirstOrDefault(x => x.UserId.Equals(id));
+            user.UserId = u.id;
+            user.Username = u.username;
+            user.Password = u.password;
+            user.Email = u.email;
+            user.FullName = u.full_name;
+            user.Phone = u.phone;
+            user.Address = u.address;
+            user.IsAdmin = u.is_admin;
+            user.IsActive = u.is_active;
             res = _rep.UpdateUser(user);
             return res;
         }
@@ -107,14 +108,9 @@ namespace Eat_Well.BLL
         //===========================================================
 
         #region -- Delete User --
-        public bool DeleteUser(int Id)
+        public object DeleteUser(int Id)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            Users user = db.Users.FirstOrDefault(x => x.UserId == Id);
-            if (user == null) return false;
-            db.Users.Remove(user);
-            db.SaveChangesAsync();
-            return true;
+            return _rep.DeleteUser(Id);
         }
         #endregion
 
@@ -124,19 +120,37 @@ namespace Eat_Well.BLL
         #region -- Get Users With Pagination --
         public object GetAllUsersWithPagination(int page, int size)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            var user = db.Users.ToList();
+
+            var user = from u in _rep.Context.Users
+#pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                       where u.UserId != null
+#pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
+                       select new
+                       {
+                           id = u.UserId,
+                           username = u.Username,
+                           email = u.Email,
+                           full_name = u.FullName,
+                           password = u.Password,
+                           address = u.Address,
+                           phone = u.Phone,
+                           is_admin = u.IsAdmin,
+                           is_active = u.IsActive
+
+                       };
             var offset = (page - 1) * size;
             var total = user.Count();
             int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = user.OrderBy(x => x.UserId).Skip(offset).Take(size).ToList();
+            var data = user.OrderBy(x => x.id).Skip(offset).Take(size).ToList();
+
+
             var res = new
             {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
+                data = data,
+                tota_record = total,
+                total_page = totalpage,
+                page = page,
+                size = size
             };
 
             return res;
@@ -144,5 +158,34 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
+        #region -- Get Users By ID -- 
+        public object GetUsersById(int id)
+        {
+           
+            var user = from u in _rep.Context.Users
+                        where  u.UserId == id
+                        select new 
+                        {
+                            id = u.UserId,
+                            username = u.Username,
+                            email = u.Email,
+                            full_name = u.FullName,
+                            password = u.Password,
+                            address = u.Address,
+                            phone = u.Phone,
+                            is_admin = u.IsAdmin,
+                            is_active = u.IsActive
+
+                        };
+            return user;
+            
+
+
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
+
     }
 }
