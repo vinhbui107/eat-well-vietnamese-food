@@ -11,16 +11,16 @@ declare var $: any;
 export class ProductsComponent implements OnInit {
   Products: any = {
     data: [],
-    totalRecord: 0,
+    total_record: 0,
     page: 0,
     size: 10,
-    totalPage: 0,
+    total_page: 0,
   };
 
   Product: any = {
-    productId: 1,
-    productName: "bao",
-    categoryId: 1,
+    id: 1,
+    name: "bao",
+    category: [],
     photo: "dasda",
     description: "dsa",
   };
@@ -43,7 +43,7 @@ export class ProductsComponent implements OnInit {
     //Gọi Get method truyền vào 2 parameter.
     //Trả về danh sách Product với page = 1 và size = 10.
     this.http
-      .get("https://localhost:44317/api/Products/pagination", { params })
+      .get("https://localhost:44317/api/Products", { params })
       .subscribe(
         (result) => {
           this.Products = result;
@@ -54,11 +54,11 @@ export class ProductsComponent implements OnInit {
   }
 
   Next() {
-    if (this.Products.page < this.Products.totalPage) {
+    if (this.Products.page < this.Products.total_page) {
       let nextPage = this.Products.page + 1;
       let params = new HttpParams().set("page", nextPage).set("size", "10");
       this.http
-        .get("https://localhost:44317/api/Products/pagination", { params })
+        .get("https://localhost:44317/api/Products", { params })
         .subscribe(
           (result) => {
             this.Products = result;
@@ -78,7 +78,7 @@ export class ProductsComponent implements OnInit {
         .set("page", PrePage.toString())
         .set("size", "10");
       this.http
-        .get("https://localhost:44317/api/Products/pagination", { params })
+        .get("https://localhost:44317/api/Products", { params })
         .subscribe(
           (result) => {
             this.Products = result;
@@ -95,9 +95,9 @@ export class ProductsComponent implements OnInit {
     if (isNew) {
       this.isEdit = false;
       this.Product = {
-        productId: 0,
-        productName: "",
-        categoryId: 1,
+        id: 0,
+        name: "",
+        category: [],
         photo: "",
         description: "",
       };
@@ -122,9 +122,9 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  saveProduct() {
+  saveProduct(id) {
     var x = this.Product;
-    this.http.put("https://localhost:44317/api/Products", x).subscribe(
+    this.http.put("https://localhost:44317/api/Products/" + id, x).subscribe(
       (result) => {
         var res: any = result;
         if (res.success) {
@@ -136,8 +136,8 @@ export class ProductsComponent implements OnInit {
     );
   }
 
-  deleteProduct(Id) {
-    this.http.delete("https://localhost:44317/api/Products/" + Id).subscribe(
+  deleteProduct(id) {
+    this.http.delete("https://localhost:44317/api/Products/" + id).subscribe(
       (result) => {
         this.Products = result;
         this.GetAllProductWithPagination(1);
