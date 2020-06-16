@@ -1,48 +1,541 @@
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
-<p>Hello world</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eat-well</title>
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- bs4 css -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<!--css-->
+<style>
+*{
+	box-sizing: border-box;
+	font-family: 'Roboto Slab', serif;
+}
+.carousel-inner img{
+    width: 100%;
+}
+.carousel-indicators li{
+  background-color: black;
+  height: 5px;
+}
+/* food List */
+.foodList h1{
+    margin-top:30px;
+    font-size: 30px;
+    background-color: #8542a0;
+    border: black solid 2px;
+    padding: 2px 5px;
+}
+
+.foodlist-item img{
+    width: 100%; 
+    display: block;
+    margin: 20px auto;
+}
+.foodlist-item h4{
+    color: black;
+    transition: all .2s;
+    margin: 0; 
+}
+.foodlist-item h4:hover{
+    transition: 0.3s;
+    color:#d81a24;
+}
+.foodlist-item p{
+    font-size: 18px;
+    color: grey;
+    margin: 0;
+}
+.foodlist-item i{
+    color: #f9be30;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+.foodlist-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.foodlist-item a:hover{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
+}
+/*Pagination*/
+.pagination{
+    margin-top: 20px;
+    font-size: 20px;
+    width: 7em;
+    position: relative;
+    left: 30%;
+}
+.pagination a{
+    text-decoration: none;
+}
+/*newsletter*/
+.newsletter {
+padding: 80px 0;
+background: #6c757d !important;
+margin-top: 2em;
+}
+
+.newsletter .content {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.newsletter .content h2 {
+color: #243c4f;
+margin-bottom: 40px; }
+.newsletter .content .form-control {
+height: 50px;
+border-color: #ffffff;
+border-radius:0;
+}
+.newsletter .content.form-control:focus {
+box-shadow: none;
+border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+min-height: 50px; 
+border-radius:0;
+background: #243c4f;
+color: #fff;
+font-weight:600;
+}
+
+</style>
+</head>
+<body>
+    <div id="slides" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+            <li data-target="#slides" data-slide-to="0" class="active"></li>
+            <li data-target="#slides" data-slide-to="1"></li>
+            <li data-target="#slides" data-slide-to="2"></li>
+        </ul>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://flyfood.vn/vnt_upload/weblink/Banner_885x350_GaQuay-BoXoiDauXanh.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="https://flyfood.vn/vnt_upload/weblink/CA_TAI_TUONG_BONG_XU_-_GIAM_100k_-_885x350.jpg">
+            </div>
+            <div class="carousel-item">
+                <img src="https://flyfood.vn/vnt_upload/weblink/DICH-VU-SAS-MIEN-PHI-THANG-6_885x350.png">
+            </div>
+        </div>
+    </div>
+<!--MENU-->
+<section class="foodList">
+    <!--content-->
+    <h1 class="text-black">MENU</h1>
+    <hr>
+        <div class="container">
+          <div class="row foodlist-item text-center">
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY</a></span>
+            </div>
+            <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+          </div>
+    
+          <div class="row foodlist-item text-center">
+            <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+            </div>
+        </div>  
+    </div>
+</section>
+
+ <!--Pagination-->
+ <nav>
+  <ul class="pagination">
+      <li class="page-item"><a href="#" class="page-link">Previous</a></li>
+      <li class="page-item"><a href="#" class="page-link">1</a></li>
+      <li class="page-item"><a href="#" class="page-link">2</a></li>
+      <li class="page-item"><a href="#" class="page-link">3</a></li>
+      <li class="page-item"><a href="#" class="page-link">4</a></li>
+      <li class="page-item"><a href="#" class="page-link">5</a></li>
+      <li class="page-item"><a href="#" class="page-link">Next</a></li>
+  </ul>
+</nav>
+<!--cac mon goi-->
+<section class="foodList">
+    <!--content-->
+    <h1 class="text-black">Các món ăn chơi</h1>
+    <hr>
+        <div class="container">
+          <div class="row foodlist-item text-center">
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY</a></span>
+            </div>
+            <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+          </div> 
+    </div>
+</section>
+<!--Cac mon ca-->
+<section class="foodList">
+    <!--content-->
+    <h1 class="text-black">Các món súp</h1>
+    <hr>
+        <div class="container">
+          <div class="row foodlist-item text-center">
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY</a></span>
+            </div>
+            <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+              <div class="col-3">
+                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+                <h4>Gỏi đu đủ</h4>
+                <p class="dollar font-weight-bold">$10</p>
+                <span><a href="#">BUY </a></span>
+              </div>
+          </div>
+    </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món tôm</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món cá</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món gà</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món bò-dê-heo</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món lẩu</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món cơm</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="foodList">
+  <!--content-->
+  <h1 class="text-black">Các món tráng miệng</h1>
+  <hr>
+      <div class="container">
+        <div class="row foodlist-item text-center">
+          <div class="col-3">
+            <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+            <h4>Gỏi đu đủ</h4>
+            <p class="dollar font-weight-bold">$10</p>
+            <span><a href="#">BUY</a></span>
+          </div>
+          <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+            <div class="col-3">
+              <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+              <h4>Gỏi đu đủ</h4>
+              <p class="dollar font-weight-bold">$10</p>
+              <span><a href="#">BUY </a></span>
+            </div>
+        </div>
+  </div>
+</section>
+
+<section class="newsletter">
+  <div class="container">
+  <div class="row">
+  <div class="col-sm-12">
+    <div class="content">
+      <h2>SUBSCRIBE TO OUR NEWSLETTER</h2>
+    <div class="input-group">
+           <input type="email" class="form-control" placeholder="Enter your email">
+           <span class="input-group-btn" style="width: 150px;">
+           <button class="btn" type="submit">Subscribe Now</button>
+           </span>
+            </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </section>
+ <!--javascript-->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+</html>
