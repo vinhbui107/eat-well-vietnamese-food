@@ -8,3 +8,7 @@
     color: white;
     padding-left: 10px;
 }
+.bg-light.text-center.pt-3 {
+  box-shadow: rgba(0, 0, 0, 0.19);
+  box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1), 0 9px 26px 0 rgba(0, 0, 0, 0.5);
+}
