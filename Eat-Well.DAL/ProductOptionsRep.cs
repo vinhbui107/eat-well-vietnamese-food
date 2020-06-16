@@ -48,7 +48,7 @@ namespace Eat_Well.DAL
 
         //=================================================================
         //=================================================================
-        //=================================================================
+
         #region -- Create ProductOptions --
         public SingleRsp CreateProductOptions(ProductOptions po)
         {
@@ -76,7 +76,7 @@ namespace Eat_Well.DAL
         #endregion
         //=================================================================
         //=================================================================
-        //=================================================================
+
         #region -- Update ProductOptions --
         public SingleRsp UpdateProductOptions(ProductOptions po)
         {
@@ -104,21 +104,32 @@ namespace Eat_Well.DAL
         #endregion
         //=================================================================
         //=================================================================
-        //=================================================================
+
         #region -- Delete Product --
-        public bool DeleteProductOptions(int PoId, int OpId)
+        public SingleRsp DeleteProductOptions(ProductOptions po)
         {
-            EatWellDBContext db = new EatWellDBContext();
-            ProductOptions po = db.ProductOptions.FirstOrDefault(x => x.ProductId == PoId && x.OptionId == OpId);
-            if (po == null) return false;
-            db.ProductOptions.Remove(po);
-            db.SaveChangesAsync();
-            return true;
+            var res = new SingleRsp();
+            using (var context = new EatWellDBContext())
+            {
+                using (var tran = context.Database.BeginTransaction())
+                {
+                    try
+                    {
+                        var t = context.ProductOptions.Remove(po);
+                        context.SaveChanges();
+                        tran.Commit();
+                    }
+                    catch (Exception ex)
+                    {   
+                        tran.Rollback();
+                        res.SetError(ex.StackTrace);
+                    }
+                }
+            }
+            return res;
         }
         #endregion
         //=================================================================
         //=================================================================
-        //=================================================================
-
     }
 }

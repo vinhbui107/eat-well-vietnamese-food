@@ -30,6 +30,7 @@ namespace Eat_Well.Web.Controllers
             var res = new SingleRsp();
             var product = _svc.GetProductById(Id);
             res.Data = product;
+            
             return Ok(res);
         }
 
@@ -49,14 +50,16 @@ namespace Eat_Well.Web.Controllers
         public IActionResult CreateProduct([FromBody]ProductsReq req)
         {
             var res = _svc.CreateProduct(req);
+
             return Ok(res);
         }
 
         // Put Method: api/Products/5
-        [HttpPut]
-        public IActionResult UpdateProduct([FromBody]ProductsReq req)
+        [HttpPut("{Id}")]
+        public IActionResult UpdateProduct(int Id, [FromBody]ProductsReq req)
         {
-            var res = _svc.UpdateProduct(req);
+            var res = _svc.UpdateProduct(Id, req);
+            
             return Ok(res);
         }
 
@@ -67,8 +70,8 @@ namespace Eat_Well.Web.Controllers
             var res = new SingleRsp();
             var del = _svc.DeleteProduct(Id);
             res.Data = del;
+            
             return Ok(res);
-
         }
 
         private readonly ProductsSvc _svc;
