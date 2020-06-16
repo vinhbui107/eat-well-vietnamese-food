@@ -47,6 +47,7 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
       { path: "about", component: AboutComponent },
       { path: "login", component: LoginComponent },
       { path: "signup", component: RegisterComponent },
+      { path: "product-detail", component: ProductDetailComponent },
 
       // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
