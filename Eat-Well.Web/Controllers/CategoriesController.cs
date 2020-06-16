@@ -53,10 +53,10 @@ namespace Eat_Well.Web.Controllers
         }
 
         // Put method: api/Categories/5
-        [HttpPut("{id}")]
-        public IActionResult UpdateCategory(int id,[FromBody]CategoriesReq req)
+        [HttpPut("{Id}")]
+        public IActionResult UpdateCategory(int Id, [FromBody]CategoriesReq req)
         {
-            var res = _svc.UpdateCategory(id, req);
+            var res = _svc.UpdateCategory(Id, req);
             return Ok(res);
         }
 
