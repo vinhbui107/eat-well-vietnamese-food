@@ -23,16 +23,10 @@
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <a class="nav-link" [routerLink]="['/']">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/products']">Products</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/about']">About Us</a>
+            <a class="nav-link" [routerLink]="['/']">TRANG CHỦ</a>
           </li>
 
-          <div class="nav-item dropdown" *ngIf="Categories.total_record > 0">
+          <div class="nav-item dropdown">
             <button
               class="btn btn-default dropdown-toggle"
               type="button"
@@ -42,17 +36,23 @@
               aria-expanded="true"
               style="color: rgba(0, 0, 0, 0.7); opacity: 0.9;"
             >
-              Categories
+              THỰC ĐƠN
               <span class="caret"></span>
             </button>
-            <div
+            <ul
               class="dropdown-menu"
-              aria-labelledby="dropdownMenuButton"
-              *ngFor="let cate of Categories.data"
+              aria-labelledby="dropdownMenu1"
+              *ngIf="Categories.total_record > 0"
             >
-              <a class="dropdown-item" href="#">{{cate.name}}</a>
-            </div>
+              <li *ngFor="let cate of Categories.data">
+                <a href="#">{{ cate.name }}</a>
+              </li>
+            </ul>
           </div>
+
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/about']">VỀ CHÚNG TÔI</a>
+          </li>
         </ul>
 
         <ul class="navbar-nav ml-auto">
@@ -61,14 +61,14 @@
               <input
                 class="form-control mr-sm-2"
                 type="search"
-                placeholder="Search"
-                aria-label="Search"
+                placeholder="Bạn muốn mua gì"
+                aria-label="Bạn muốn mua gì"
               />
               <button
                 class="btn btn-outline-secondary my-2 my-sm-0 pr-2"
                 type="submit"
               >
-                Search
+                TÌM KIẾM
               </button>
             </form>
           </li>
@@ -79,7 +79,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" [routerLink]="['/login']">
-              Login
+              ĐĂNG NHẬP
             </a>
           </li>
         </ul>

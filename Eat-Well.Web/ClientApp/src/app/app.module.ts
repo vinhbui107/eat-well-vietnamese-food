@@ -6,7 +6,6 @@ import { RouterModule } from "@angular/router";
 
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./home/home.component";
-import { ProductsComponent } from "./products/products.component";
 import { CartComponent } from "./cart/cart.component";
 import { CheckoutComponent } from "./checkout/checkout.component";
 import { FooterComponent } from "./shared/footer/footer.component";
@@ -18,12 +17,12 @@ import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.componen
 import { AdminUsersComponent } from "./admin/admin-users/admin-users.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
+import { CategoryDetailComponent } from "./category-detail/category-detail.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ProductsComponent,
     CartComponent,
     CheckoutComponent,
     FooterComponent,
@@ -35,6 +34,7 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
     AdminUsersComponent,
     AboutComponent,
     ProductDetailComponent,
+    CategoryDetailComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -43,7 +43,6 @@ import { ProductDetailComponent } from "./product-detail/product-detail.componen
     RouterModule.forRoot([
       // Anonymous User
       { path: "", component: HomeComponent, pathMatch: "full" },
-      { path: "products", component: ProductsComponent },
       { path: "about", component: AboutComponent },
       { path: "login", component: LoginComponent },
       { path: "signup", component: RegisterComponent },
