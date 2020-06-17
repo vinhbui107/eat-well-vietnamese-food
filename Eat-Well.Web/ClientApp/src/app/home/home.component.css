@@ -1,0 +1,101 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Roboto Slab', serif;
+}
+.carousel-inner img{
+    width: 100%;
+}
+.carousel-indicators li{
+  background-color: black;
+  height: 5px;
+}
+/* food List */
+.foodList h1{
+    margin-top:30px;
+    font-size: 30px;
+    background-color: #00522C;
+    border: black solid 2px;
+    padding: 2px 5px;
+    color: #FFFFF2;
+    height: 45px;
+}
+
+.foodlist-item img{
+    width: 100%; 
+    display: block;
+    margin: 20px auto;
+}
+.foodlist-item h4{
+    color: black;
+    transition: all .2s;
+    margin: 0; 
+}
+.foodlist-item h4:hover{
+    transition: 0.3s;
+    color:#d81a24;
+}
+.foodlist-item p{
+    font-size: 18px;
+    color: grey;
+    margin: 0;
+}
+.foodlist-item i{
+    color: #f9be30;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+.foodlist-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.foodlist-item a:hover{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
+}
+/*Pagination*/
+.pagination{
+    margin-top: 20px;
+    font-size: 20px;
+    width: 7em;
+    position: relative;
+    left: 35%;
+}
+.pagination a{
+    text-decoration: none;
+}
+/*newsletter*/
+.newsletter {
+padding: 80px 0;
+background: #6c757d !important;
+margin-top: 2em;
+}
+
+.newsletter .content {
+max-width: 650px;
+margin: 0 auto;
+text-align: center;
+position: relative;
+z-index: 2; }
+.newsletter .content h2 {
+color: #243c4f;
+margin-bottom: 40px; }
+.newsletter .content .form-control {
+height: 50px;
+border-color: #ffffff;
+border-radius:0;
+}
+.newsletter .content.form-control:focus {
+box-shadow: none;
+border: 2px solid #243c4f;
+}
+.newsletter .content .btn {
+min-height: 50px; 
+border-radius:0;
+background: #243c4f;
+color: #fff;
+font-weight:600;
+}
