@@ -12,12 +12,10 @@ import { FooterComponent } from "./shared/footer/footer.component";
 import { HeaderComponent } from "./shared/header/header.component";
 import { LoginComponent } from "./shared/login/login.component";
 import { RegisterComponent } from "./shared/register/register.component";
-import { AdminProductsComponent } from "./admin/admin-products/admin-products.component";
-import { AdminOrdersComponent } from "./admin/admin-orders/admin-orders.component";
-import { AdminUsersComponent } from "./admin/admin-users/admin-users.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
+import { AdminModule } from "./admin/admin.module";
 
 @NgModule({
   declarations: [
@@ -29,9 +27,7 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
     HeaderComponent,
     LoginComponent,
     RegisterComponent,
-    AdminProductsComponent,
-    AdminOrdersComponent,
-    AdminUsersComponent,
+
     AboutComponent,
     ProductDetailComponent,
     CategoryDetailComponent,
@@ -40,6 +36,7 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
     FormsModule,
+    AdminModule,
     RouterModule.forRoot([
       // Anonymous User
       { path: "", component: HomeComponent, pathMatch: "full" },
@@ -52,10 +49,8 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
 
+
       // Admin Router
-      { path: "admin/orders", component: AdminOrdersComponent },
-      { path: "admin/users", component: AdminUsersComponent },
-      { path: "admin/products", component: AdminProductsComponent },
     ]),
   ],
   providers: [],
