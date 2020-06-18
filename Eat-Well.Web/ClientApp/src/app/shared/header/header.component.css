@@ -48,6 +48,9 @@
   margin-left: -2px;
   margin-bottom: -10px;
 }
+.dropdown-toggle::after {
+  display: none;
+}
 .bg-light {
   box-shadow: rgba(0, 0, 0, 0.19);
   box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 1), 0 9px 26px 0 rgba(0, 0, 0, 0.5);
