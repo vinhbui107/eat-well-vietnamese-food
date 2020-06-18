@@ -149,10 +149,79 @@ namespace Eat_Well.BLL
                        where c.CategoryId == id
                        select new
                        {
-                         id = c.CategoryId,
-                         name = c.CategoryName,
-                         slug = c.CategorySlug,
+                           id = c.CategoryId,
+                           name = c.CategoryName,
+                           slug = c.CategorySlug,
+                           products = (from a in _rep.Context.Categories
+                                       join p in _rep.Context.Products on a.CategoryId equals p.CategoryId
+                                       where c.CategoryId == p.CategoryId
+                                       select new
+                                       {
+                                           id = p.ProductId,
+                                           name = p.ProductName,
+                                           descripton = p.Description,
+                                           //Get category with products
+                                           /*Like this
+                                           *  
+                                           *                                                                           
+                                           * "category:" {
+                                           *               "id": id,
+                                           *               "name": name,
+                                           *                "products": [
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "descripton":
+                                           *                             },
+                                           *
+                                           *                             {
+                                           *                               "id": ,
+                                           *                               "name": "",
+                                           *                               "descripton": "",
+                                           *                             },
+                                           *                           ]
+                                           *             }
+                                           *//////////////////////////////////////
+
+                                           options = (from o in _rep.Context.Options
+                                                      join po in _rep.Context.ProductOptions on o.OptionId equals po.OptionId
+                                                      where po.ProductId == p.ProductId
+                                                      select new
+                                                      {
+                                                        id = o.OptionId,
+                                                        name = o.OptionName,
+                                                        price = po.Price
+                                                      }).ToList()
+                                         }).ToList()
+                                                                              
                        };
+                                          //Get Options
+                                          /*Like this
+                                           * 
+                                           * 
+                                           *..........
+                                           * "products": [
+                                           *             {
+                                           *               "id": 
+                                           *               "name": 
+                                           *               "descripton": 
+                                           *               "options" : [
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "price":
+                                           *                             },
+                                           *
+                                           *                             {
+                                           *                               "id":
+                                           *                               "name":
+                                           *                               "price":
+                                           *                             }
+                                           *                           ]
+                                           *             },
+                                           *           ]
+                                           *//////////////////////////////
+
             return user;
 
 

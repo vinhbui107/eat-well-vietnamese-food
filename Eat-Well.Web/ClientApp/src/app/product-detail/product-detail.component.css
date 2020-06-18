@@ -1,0 +1,223 @@
+#gallery{
+    display: flex;
+    justify-content: space-between;  
+}
+.box-price {
+    border: 2px solid #eaeaea;
+    margin-bottom: 50px;
+    width: 1300px;
+    margin: 0px;
+    padding: 0px;
+    margin-left: 20px;
+    height: 350px;
+}
+.imgvote{
+    background-color: #F9F9F9;
+    padding: 5px 10px;
+    margin-bottom: 10px;
+}
+.picture{
+    margin-right: 30px;
+}
+.price{
+    margin-left: 5px;
+}
+.form-control{
+    width: 150px;
+}
+.i-select{
+    position: absolute;
+    margin-left: 10px ;
+}
+.price{
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+}
+/*button*/
+.button_group{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 5px 10%;
+    height: 35px !important;
+    font-size: 17px;
+}
+.button_group a{
+    text-decoration: none !important;
+    color: #eaeaea !important;
+}
+.button_group i{
+    margin-right: 10px;
+}
+.btn-addtocart {
+	-moz-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	box-shadow:inset 0px 1px 0px 0px #fce2c1;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ffc477), color-stop(1, #fb9e25) );
+	background:-moz-linear-gradient( center top, #ffc477 5%, #fb9e25 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffc477', endColorstr='#fb9e25');
+	background-color:#f06610;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:2px solid #eeb44f;
+	display:inline-block;
+	height:43px;
+	line-height: 30px;
+	text-decoration:none;
+	text-align:center;
+    margin: 5px 0px;
+    border-radius: 6px;
+}
+.btn-addtocart:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #fc9c1e), color-stop(1, #faa83d) );
+	background:-moz-linear-gradient( center top, #fb9e25 5%, #f8b45a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#fb9e25', endColorstr='#ffc477');
+	background-color:#fa9b20;
+}.btn-addtocart:active {
+	position:relative;
+    top:1px;
+    border: none !important;
+}
+.btn-buynow {
+	-moz-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #f5978e;
+	box-shadow:inset 0px 1px 0px 0px #f5978e;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #f24537), color-stop(1, #c62d1f) );
+	background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f');
+	background-color:#fa1909;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:2px solid #d02718;
+	display:inline-block;
+	height:43px;
+	line-height: 30px;
+	text-decoration:none;
+	text-align:center;
+    margin: 5px 0px;
+    border-radius: 6px;
+}
+.btn-buynow:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #c62d1f), color-stop(1, #f24537) );
+	background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537');
+	background-color:#c62d1f;
+}.btn-buynow:active {
+	position:relative;
+    top:1px;
+    border: none !important;
+}
+.btn-back-home {
+	-moz-box-shadow:inset 0px 1px 0px 0px #caefab;
+	-webkit-box-shadow:inset 0px 1px 0px 0px #caefab;
+	box-shadow:inset 0px 1px 0px 0px #caefab;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #77d42a), color-stop(1, #5cb811) );
+	background:-moz-linear-gradient( center top, #77d42a 5%, #5cb811 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77d42a', endColorstr='#5cb811');
+	background-color:#00512C;
+	-webkit-border-top-left-radius:0px;
+	-moz-border-radius-topleft:0px;
+	border-top-left-radius:0px;
+	-webkit-border-top-right-radius:0px;
+	-moz-border-radius-topright:0px;
+	border-top-right-radius:0px;
+	-webkit-border-bottom-right-radius:0px;
+	-moz-border-radius-bottomright:0px;
+	border-bottom-right-radius:0px;
+	-webkit-border-bottom-left-radius:0px;
+	-moz-border-radius-bottomleft:0px;
+	border-bottom-left-radius:0px;
+	text-indent:0px;
+	border:2px solid #00512C;
+	display:inline-block;
+	display:inline-block;
+	height:43px;
+	line-height: 30px;
+	text-decoration:none;
+	text-align:center;
+    margin: 5px 0px;
+    border-radius: 6px;
+}
+.btn-back-home:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5cb811), color-stop(1, #77d42a) );
+	background:-moz-linear-gradient( center top, #5cb811 5%, #77d42a 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#5cb811', endColorstr='#77d42a');
+	background-color:#026438;
+}.btn-back-home:active {
+	position:relative;
+    top:1px;
+    border: none !important;
+}
+/* food List */
+.foodList{
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+.foodList h1{
+    font-size: 30px;
+    background-color: #00522C;
+    border: black solid 2px;
+    padding: 2px 5px;
+    color: #FFFFF2;
+    height: 45px;
+}
+
+.foodlist-item img{
+    width: 100%; 
+    display: block;
+    margin: 20px auto;
+}
+.foodlist-item h4{
+    color: black;
+    transition: all .2s;
+    margin: 0; 
+}
+.foodlist-item h4:hover{
+    transition: 0.3s;
+    color:#d81a24;
+}
+.foodlist-item p{
+    font-size: 18px;
+    color: grey;
+    margin: 0;
+}
+.foodlist-item i{
+    color: #f9be30;
+    margin: 0;
+    padding: 0;
+    font-size: 15px;
+}
+.foodlist-item a{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+.foodlist-item a:hover{
+    text-decoration: none;
+    color: red;
+    font-size: 20px;
+    transition: 0.3s;
+}
