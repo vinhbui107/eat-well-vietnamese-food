@@ -8,40 +8,80 @@
             <div class="card-body">
               <form>
                 <div class="form-group">
-                  <label>Tài Khoản</label>
-                  <input type="Username" class="form-control" placeholder="" />
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Tên đăng nhập"
+                    [(ngModel)]="account.username"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
                 </div>
 
                 <div class="form-row">
                   <div class="col form-group">
-                    <label>Họ và Tên </label>
-                    <input type="text" class="form-control" placeholder="" />
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Họ và Tên"
+                      [(ngModel)]="account.fullname"
+                      [ngModelOptions]="{ standalone: true }"
+                    />
                   </div>
                 </div>
 
                 <div class="form-group">
-                  <label>Email</label>
-                  <input type="email" class="form-control" placeholder="" />
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="Email"
+                    [(ngModel)]="account.email"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
                 </div>
 
                 <div class="form-group">
-                  <label>Địa Chỉ</label>
-                  <input type="Address" class="form-control" placeholder="" />
+                  <input
+                    type="Address"
+                    class="form-control"
+                    placeholder="Địa Chỉ"
+                    [(ngModel)]="account.address"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
                 </div>
                 <div class="form-group">
-                  <label>Số Điện Thoại</label>
-                  <input type="Phone" class="form-control" placeholder="" />
+                  <input
+                    type="Phone"
+                    class="form-control"
+                    placeholder="Số Điện Thoại"
+                    [(ngModel)]="account.phone"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
                 </div>
 
                 <div class="form-group">
-                  <label>Mật Khẩu</label>
-                  <input class="form-control" type="password" />
+                  <input
+                    class="form-control"
+                    type="password"
+                    placeholder="Mật Khẩu"
+                    [(ngModel)]="account.password"
+                    [ngModelOptions]="{ standalone: true }"
+                  />
                 </div>
-                <!-- form-group end.// -->
+
                 <div class="form-group">
                   <button
                     type="submit"
                     class="btn btnSubmit btn-primary btn-block"
+                    (click)="
+                      registerAccount(
+                        account.username,
+                        account.email,
+                        account.fullname,
+                        account.password,
+                        account.address,
+                        account.phone
+                      )
+                    "
                   >
                     Tạo Tài Khoản
                   </button>

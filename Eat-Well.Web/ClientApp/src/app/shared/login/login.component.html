@@ -9,7 +9,8 @@
               type="text"
               class="form-control"
               placeholder="Tài Khoản"
-              value=""
+              [(ngModel)]="account.username"
+              [ngModelOptions]="{ standalone: true }"
             />
           </div>
           <div class="form-group">
@@ -17,16 +18,22 @@
               type="password"
               class="form-control"
               placeholder="Mật Khẩu"
-              value=""
+              [(ngModel)]="account.password"
+              [ngModelOptions]="{ standalone: true }"
             />
           </div>
           <div class="form-group">
-            <input type="submit" class="btn btnSubmit" value="Đăng nhập" />
+            <button
+              type="submit"
+              (click)="userLogin(account.username, account.password)"
+              class="btn btnSubmit"
+            >
+              Submit
+            </button>
           </div>
           <div class="form-group">
-            <a class="ForgetPwd" [routerLink]="['/signup']"
-              >Tạo tài khoản mới ?</a
-            >
+            Chưa có tài khoản ?
+            <a class="ForgetPwd" [routerLink]="['/signup']">Đăng kí</a>
           </div>
         </form>
       </div>

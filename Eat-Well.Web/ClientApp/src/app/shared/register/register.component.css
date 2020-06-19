@@ -15,10 +15,8 @@
   color: #333;
 }
 
-
 .signup-container form {
   padding: 1%;
-
 }
 
 .btnSubmit {
@@ -27,7 +25,6 @@
   padding: 1.5%;
   border: none;
   cursor: pointer;
-
 }
 
 .signup-form-1 .btnSubmit {
