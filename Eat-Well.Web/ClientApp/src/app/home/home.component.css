@@ -10,6 +10,8 @@
 }
 .carousel-indicators {
     opacity: 0.5;
+    position: absolute;
+    
 }
 .carousel-indicators li:hover{
     background-color: #beb8b8 !important;
@@ -57,20 +59,17 @@
     transition: 0.4s;
 }
 .foodlist-item img{
-    width: 100%; 
+    width: 150px;
+    height: 150px; 
     display: block;
     margin: 20px auto;
 }
-.product-name p{
-    color: black;
-    font-weight: bold;
-    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;
-}
+
 .options{
     font-size: 14px;
     color: grey;
-    margin: 0;
-    margin: 10px 0 !important;
+    margin: 10px 0px;
+    margin-top: 80px !important;
 }
 .options ul li{
     list-style: none;
@@ -88,7 +87,7 @@
 .buy{   
     position: absolute;
     bottom: 20px;
-    left: 170px;
+    left: 150px;
     width: 50px;
     height: 30px;
     cursor: pointer;
@@ -151,6 +150,7 @@
     transition: 0.3s;
     border-radius: 10px;
 }
+
 .box a:hover {
     border:  2px groove rgb(245, 25, 25);
     transition-delay: 0.4s;
