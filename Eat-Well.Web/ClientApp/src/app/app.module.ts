@@ -39,7 +39,6 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
     HttpClientModule,
     FormsModule,
-    AdminModule,
     RouterModule.forRoot([
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "about", component: AboutComponent },
