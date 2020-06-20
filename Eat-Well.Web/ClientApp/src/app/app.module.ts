@@ -16,6 +16,8 @@ import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
 import { AdminModule } from "./admin.module";
+import { ProductAdminComponent } from "./product-admin/product-admin.component";
+import { UserAdminComponent } from "./user-admin/user-admin.component";
 
 @NgModule({
   declarations: [
@@ -54,6 +56,8 @@ import { AdminModule } from "./admin.module";
       { path: "check-out", component: CheckoutComponent },
 
       // Admin Router
+      { path: "admin/product", component: ProductAdminComponent },
+      { path: "admin/user", component: UserAdminComponent },
     ]),
   ],
   providers: [],
