@@ -26,29 +26,25 @@
       </button>
   </div>
     <hr>
-<div class="container">
+<div class="container" *ngIf="Products.total_record>0">
   <div class="row foodlist-item">
-    <div class="col-3 box">
+    <div class="col-3 box" *ngFor="let product of Products.data">
       <a href="#">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
              
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
+      <img src="{{ product.photo }}">
               
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
+      <span>
+        <h6>{{ product.name }}</h6>
+      </span>                     
       <div class="options">
         <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
+          <li *ngFor="let item of product.options">
+            <label style="margin-right: 5px;">{{ item.name }}: </label>
+            <strong>{{ item.price }}</strong>
           </li>
         </ul>
       </div>
@@ -59,234 +55,8 @@
         </div>
       </a> 
     </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
     </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-  </div>
-    <div class="row foodlist-item" style="margin-top: 15px;">
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-
-    <div class="col-3 box">
-      <a href="#">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-             
-      <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              
-      <div class="product-name">
-        <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-      </div>                     
-      <div class="options">
-        <ul>
-          <li>
-            <label style="margin-right: 5px;">Size lớn: </label>
-            <strong>150.000đ</strong>
-          </li>
-          <li>
-            <label style="margin-right: 5px;">Size chuẩn: </label>
-            <strong>150.000đ</strong>
-          </li>
-        </ul>
-      </div>
-        <div class="buy">
-          <a class="nav-link" [routerLink]="['/shopping-cart']">
-            <i class="fas fa-shopping-cart"></i>
-          </a>
-        </div>
-      </a> 
-    </div>
-          </div>
-    </div>
+</div>
 </section>
 
 <section class="newsletter">
