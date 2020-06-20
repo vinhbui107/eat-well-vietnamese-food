@@ -15,7 +15,6 @@ import { RegisterComponent } from "./shared/register/register.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
-import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +34,6 @@ import { AlertComponent } from './shared/alert/alert.component';
 
     ProductDetailComponent,
     CategoryDetailComponent,
-    AlertComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -52,6 +50,9 @@ import { AlertComponent } from './shared/alert/alert.component';
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
 
+      // Admin Router
+      { path: "admin/product", component: ProductAdminComponent },
+      { path: "admin/user", component: UserAdminComponent },
     ]),
   ],
   providers: [],
