@@ -15,7 +15,7 @@ import { RegisterComponent } from "./shared/register/register.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
-import { AdminModule } from "./admin.module";
+import { AlertComponent } from './shared/alert/alert.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +35,7 @@ import { AdminModule } from "./admin.module";
 
     ProductDetailComponent,
     CategoryDetailComponent,
+    AlertComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -42,18 +43,15 @@ import { AdminModule } from "./admin.module";
     FormsModule,
     AdminModule,
     RouterModule.forRoot([
-      // Anonymous User
       { path: "", component: HomeComponent, pathMatch: "full" },
       { path: "about", component: AboutComponent },
       { path: "login", component: LoginComponent },
       { path: "signup", component: RegisterComponent },
       { path: "product-detail", component: ProductDetailComponent },
 
-      // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
 
-      // Admin Router
     ]),
   ],
   providers: [],
