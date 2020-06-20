@@ -15,20 +15,24 @@ import { RegisterComponent } from "./shared/register/register.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
-import { AdminModule } from "./admin/admin.module";
+import { AdminModule } from "./admin.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CartComponent,
-    CheckoutComponent,
+
     FooterComponent,
     HeaderComponent,
+
+    HomeComponent,
+    AboutComponent,
+
     LoginComponent,
     RegisterComponent,
 
-    AboutComponent,
+    CartComponent,
+    CheckoutComponent,
+
     ProductDetailComponent,
     CategoryDetailComponent,
   ],
@@ -48,7 +52,6 @@ import { AdminModule } from "./admin/admin.module";
       // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
-
 
       // Admin Router
     ]),

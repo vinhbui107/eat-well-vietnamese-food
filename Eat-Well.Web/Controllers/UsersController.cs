@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace Eat_Well.Web.Controllers
 {
@@ -68,6 +69,29 @@ namespace Eat_Well.Web.Controllers
             res.Data = del;
             return Ok(res);
 
+        }
+
+        // Authenticate 
+        [HttpPost("Authenticate")]
+        public IActionResult Authenticate([FromBody]AuthenticateReq model)
+        {
+            var user = _svc.AuthencicateUser(model.username, model.password);
+
+            if (user == null)
+                return BadRequest(new { message = "Username or password is incorrect" });
+
+            // return basic user info and authentication token
+            return Ok(new
+            {
+                id = user.UserId,
+            });
+        }
+
+        [HttpPost("Register")]
+        public IActionResult Register([FromBody]UsersReq model)
+        {
+            var res = _svc.RegisterUser(model);
+            return Ok(res);
         }
         private readonly UsersSvc _svc;
     }
