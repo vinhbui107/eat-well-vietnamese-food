@@ -58,6 +58,8 @@ import { CommonComponent } from "./shared/common/common.component";
 
 
       // Admin Router
+      { path: "admin/product", component: ProductAdminComponent },
+      { path: "admin/user", component: UserAdminComponent },
     ]),
   ],
   providers: [],
