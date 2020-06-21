@@ -16,7 +16,8 @@ import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
 import { AdminModule } from "./admin.module";
-import { CommonComponent } from "./shared/common/common.component";
+import { ProductAdminComponent } from "./product-admin/product-admin.component";
+import { UserAdminComponent } from "./user-admin/user-admin.component";
 
 @NgModule({
   declarations: [
@@ -36,8 +37,6 @@ import { CommonComponent } from "./shared/common/common.component";
 
     ProductDetailComponent,
     CategoryDetailComponent,
-    CommonComponent,
-    
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: "ng-cli-universal" }),
@@ -56,7 +55,6 @@ import { CommonComponent } from "./shared/common/common.component";
       // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
-
 
       // Admin Router
       { path: "admin/product", component: ProductAdminComponent },
