@@ -17,6 +17,17 @@ export class HomeComponent {
     total_page:0
   };
 
+  Product: any = {
+    id: 1,
+    name: "bao",
+    category: [],
+    photo: "sdsdsd",
+    description: "dsdsd",
+    slug: "dsds",
+    is_active: true,
+    options: [],
+  };
+
 
   constructor(
     private http: HttpClient, private router:Router,
@@ -38,4 +49,18 @@ export class HomeComponent {
       },error => console.error(error)
     );
 }
+
+getproductbyid(id) {
+  this.http.get("https://localhost:44317/api/Products/" + id).subscribe(
+    (result) => {
+      this.Product = result;
+      this.Product = this.Product.data;
+      console.log(id);
+      this.router.navigate(["/product/" + id]);
+    },
+    (error) => console.error(error)
+  );
+}
+
+
 }

@@ -158,6 +158,7 @@ namespace Eat_Well.BLL
                                        select new
                                        {
                                            id = p.ProductId,
+                                           photo = p.Photo,
                                            name = p.ProductName,
                                            descripton = p.Description,
                                            //Get category with products
