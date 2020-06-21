@@ -1,1 +1,44 @@
-<p>category-detail works!</p>
+<section class="foodList">
+  <!--content-->
+  <div class="txt-title">
+    <h1
+      class="text-black"
+      style="background-color: #00522c; height: 50px; width: 13em;"
+    >
+      {{ Category.name }}
+    </h1>
+    <button class="subcat">
+      <a href="#">Xem tất cả</a>
+    </button>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row foodlist-item">
+      <div class="col-3 box" *ngFor="let pro of Category.products">
+        <a (click)="getIdProduct(pro.id)">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <img src="{{ pro.photo }}" />
+          <span>
+            <h6>{{ pro.name }}</h6>
+          </span>
+          <div class="options">
+            <ul>
+              <li *ngFor="let po of pro.options">
+                <label style="margin-right: 5px;">{{ po.name }}: </label>
+                <strong>{{ po.price }}đ</strong>
+              </li>
+            </ul>
+          </div>
+          <div class="buy">
+            <a class="nav-link" [routerLink]="['/shopping-cart']">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -17,6 +17,7 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
+
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 import { CartComponent } from "./cart/cart.component";

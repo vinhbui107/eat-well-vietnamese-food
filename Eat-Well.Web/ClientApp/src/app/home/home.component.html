@@ -22,9 +22,8 @@
     </div>
   </div>
 </div>
-<!--MENU-->
+
 <section class="foodList">
-  <!--content-->
   <div class="txt-title">
     <div style="background-color: rgb(21, 233, 233); width: 5px;"></div>
     <h1 class="text-black" style="color: black; margin-left: 20px;">MENU</h1>
@@ -33,7 +32,6 @@
     </button>
   </div>
   <hr />
-  <!-- product list -->
   <div class="container" *ngIf="Products.total_record > 0">
     <div class="row foodlist-item">
       <div class="col-3 box" *ngFor="let product of Products.data">
@@ -63,7 +61,6 @@
       </div>
     </div>
   </div>
-  <!-- product list -->
 </section>
 
 <section class="newsletter">
