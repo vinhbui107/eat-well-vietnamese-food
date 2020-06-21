@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { HeaderComponent } from "../shared/header/header.component";
+
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
