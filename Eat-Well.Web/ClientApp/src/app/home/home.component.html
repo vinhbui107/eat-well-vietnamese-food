@@ -4,42 +4,48 @@
     <li data-target="#slides" data-slide-to="1"></li>
     <li data-target="#slides" data-slide-to="2"></li>
   </ul>
-<div class="carousel-inner">
-  <div class="carousel-item active">
-    <img src="https://flyfood.vn/vnt_upload/weblink/Banner_885x350_GaQuay-BoXoiDauXanh.jpg">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img
+        src="https://flyfood.vn/vnt_upload/weblink/Banner_885x350_GaQuay-BoXoiDauXanh.jpg"
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://flyfood.vn/vnt_upload/weblink/CA_TAI_TUONG_BONG_XU_-_GIAM_100k_-_885x350.jpg"
+      />
+    </div>
+    <div class="carousel-item">
+      <img
+        src="https://flyfood.vn/vnt_upload/weblink/DICH-VU-SAS-MIEN-PHI-THANG-6_885x350.png"
+      />
+    </div>
   </div>
-<div class="carousel-item">
-    <img src="https://flyfood.vn/vnt_upload/weblink/CA_TAI_TUONG_BONG_XU_-_GIAM_100k_-_885x350.jpg">
-</div>
-<div class="carousel-item">
-    <img src="https://flyfood.vn/vnt_upload/weblink/DICH-VU-SAS-MIEN-PHI-THANG-6_885x350.png">
-</div>
-</div>
 </div>
 <!--MENU-->
 <section class="foodList">
-    <!--content-->
+  <!--content-->
   <div class="txt-title">
     <div style="background-color: rgb(21, 233, 233); width: 5px;"></div>
-    <h1 class="text-black" style="color: black; margin-left: 20px;">MENU</h1>  
-      <button class="subcat">
-        <a href="#">Xem tất cả</a>
-      </button>
+    <h1 class="text-black" style="color: black; margin-left: 20px;">MENU</h1>
+    <button class="subcat">
+      <a href="#">Xem tất cả</a>
+    </button>
   </div>
-    <hr>
-    <!-- product list -->
-<div class="container" *ngIf="Products.total_record>0">
-      <div class="row foodlist-item">
-        <div class="col-3 box" *ngFor="let product of Products.data">
-          <a href="#">
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>         
-          <img src="{{ product.photo }}">            
+  <hr />
+  <!-- product list -->
+  <div class="container" *ngIf="Products.total_record > 0">
+    <div class="row foodlist-item">
+      <div class="col-3 box" *ngFor="let product of Products.data">
+        <a href="#">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <img src="{{ product.photo }}" />
           <span style="margin-left: -10px;">
             <h6>{{ product.name }}</h6>
-          </span>                     
+          </span>
           <div class="options">
             <ul>
               <li *ngFor="let item of product.options">
@@ -48,28 +54,34 @@
               </li>
             </ul>
           </div>
-            <div class="buy">
-              <a class="nav-link" [routerLink]="['/shopping-cart']">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </div>
-          </a> 
-        </div>
-        </div>
-</div>
-    <!-- product list -->
+          <div class="buy">
+            <a class="nav-link" [routerLink]="['/shopping-cart']">
+              <i class="fas fa-shopping-cart"></i>
+            </a>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- product list -->
 </section>
 
-<section class="newsletter" >
+<section class="newsletter">
   <div class="container">
     <div class="content">
       <h4 style="letter-spacing: 2px;">SUBSCRIBE TO OUR NEWSLETTER</h4>
-    <div class="input-group">
-      <input type="email" class="form-control" placeholder="Nhập vào Email của bạn...">
+      <div class="input-group">
+        <input
+          type="email"
+          class="form-control"
+          placeholder="Nhập vào Email của bạn..."
+        />
         <span class="input-group-btn" style="width: 150px;">
-          <button class="btn" type="submit" style="margin-left:5px">Subscribe Now</button>
+          <button class="btn" type="submit" style="margin-left: 5px;">
+            Subscribe Now
+          </button>
         </span>
+      </div>
     </div>
   </div>
-  </div>
-  </section>
+</section>
