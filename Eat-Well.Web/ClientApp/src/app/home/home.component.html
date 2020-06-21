@@ -20,7 +20,7 @@
 <section class="foodList">
     <!--content-->
   <div class="txt-title">
-    <h1 class="text-black" style="background-color: #00522C; height: 50px; width: 5em;">MENU</h1>  
+    <h1 class="text-black" style="background-color: #00522C; height: 50px; width: 5em;">MENU</h1>
       <button class="subcat">
         <a href="#">Xem tất cả</a>
       </button>
@@ -29,17 +29,17 @@
 <div class="container" *ngIf="Products.total_record>0">
   <div class="row foodlist-item">
     <div class="col-3 box" *ngFor="let product of Products.data">
-      <a href="#">
+      <a (click)="getproductbyid(product.id)">
         <span></span>
         <span></span>
         <span></span>
         <span></span>
-             
+
       <img src="{{ product.photo }}">
-              
+
       <span>
         <h6>{{ product.name }}</h6>
-      </span>                     
+      </span>
       <div class="options">
         <ul>
           <li *ngFor="let item of product.options">
@@ -53,7 +53,7 @@
             <i class="fas fa-shopping-cart"></i>
           </a>
         </div>
-      </a> 
+      </a>
     </div>
     </div>
 </div>
@@ -70,4 +70,3 @@
         </span>
     </div>
   </div>
-  
