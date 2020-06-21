@@ -20,234 +20,58 @@
 <section class="foodList">
     <!--content-->
   <div class="txt-title">
-    <h1 class="text-black" style="background-color: #00522C; height: 50px; width: 5em;">MENU</h1>  
+    <h1 class="text-black" style="background-color: #00522C; height: 50px; width: 5em;">MENU</h1>
       <button class="subcat">
         <a href="#">Xem tất cả</a>
       </button>
   </div>
     <hr>
-        <div class="container">
-          <div class="row foodlist-item">
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
+    <!-- product list -->
+<div class="container" *ngIf="Products.total_record>0">
 
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+  <div class="row foodlist-item">
+    <div class="col-3 box" *ngFor="let product of Products.data">
+      <a (click)="getproductbyid(product.id)">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
 
-          <div class="row foodlist-item">
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
+      <img src="{{ product.photo }}">
 
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-
-            <div class="col-3 box">
-              <a href="#">
-                <img src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg" alt="">
-              </a>
-              <div class="product-name">
-              <p>Cá bóng mú hấp HONGKONG - cuốn bánh tráng </p>
-              </div>                    
-              <div class="options">
-                  <ul>
-                    <li>
-                      <label style="margin-right: 5px;">Size lớn: </label>
-                      <span>150.000đ</span>
-                    </li>
-                    <li>
-                      <label style="margin-right: 5px;">Size chuẩn: </label>
-                      <span>110.000đ</span>
-                    </li>
-                  </ul>
-              </div>
-              <div class="buy">
-                <a class="nav-link" [routerLink]="['/shopping-cart']">
-                  <i class="fas fa-shopping-cart"></i>
-                </a>
-              </div>
-            </div>
-          </div>
+      <span>
+        <h6>{{ product.name }}</h6>
+      </span>
+      <div class="options">
+        <ul>
+          <li *ngFor="let item of product.options">
+            <label style="margin-right: 5px;">{{ item.name }}: </label>
+            <strong>{{ item.price }}</strong>
+          </li>
+        </ul>
+      </div>
+        <div class="buy">
+          <a class="nav-link" [routerLink]="['/shopping-cart']">
+            <i class="fas fa-shopping-cart"></i>
+          </a>
+        </div>
+      </a>
     </div>
+    </div>
+</div>
+    <!-- product list -->
 </section>
 
-<section class="newsletter">
+<section class="newsletter" >
   <div class="container">
     <div class="content">
-      <h4>SUBSCRIBE TO OUR NEWSLETTER</h4>
-    <div class="input-group">
-      <input type="email" class="form-control" placeholder="Enter your email">
+      <h4 style="letter-spacing: 2px;">SUBSCRIBE TO OUR NEWSLETTER</h4>
+      <div class="input-group">
+        <input type="email" class="form-control" placeholder="Nhập vào Email của bạn...">
         <span class="input-group-btn" style="width: 150px;">
           <button class="btn" type="submit" style="margin-left:5px">Subscribe Now</button>
         </span>
+      </div>
     </div>
   </div>
-  
+</section>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-header",
@@ -10,23 +10,42 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit {
   Categories: any = {
     data: [],
-    total_record: 0,
-    page: 0,
-    size: 10,
-    total_page: 0,
+    total_record: Number,
+    page: Number,
+    size: Number,
+    total_page: Number,
   };
+  refeshdata: any;
 
   constructor(
     private http: HttpClient,
     private router: Router,
+    private route: ActivatedRoute,
     @Inject("BASE_URL") baseUrl: string
-  ) {}
-
-  ngOnInit() {
-    this.GetAllProductWithPagination(1);
+  ) // refesh data
+  {
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+    this.refeshdata = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
   }
 
-  GetAllProductWithPagination(cPage) {
+  ngOnDestroy() {
+    if (this.refeshdata) {
+      this.refeshdata.unsubscribe();
+    }
+  }
+  // refesh data
+
+  ngOnInit() {
+    this.GetCategories(1);
+  }
+
+  GetCategories(cPage) {
     //Tạo mới 2 parameter, page và size.
     let params = new HttpParams().set("page", cPage).set("size", "10");
     //Gọi Get method truyền vào 2 parameter.
@@ -41,5 +60,13 @@ export class HeaderComponent implements OnInit {
         (error) => console.error(error)
       );
   }
-}
 
+  getbyid(id) {
+    this.http.get("https://localhost:44317/api/Categories/" + id).subscribe(
+      (result) => {
+        this.router.navigate(["/category/" + id]);
+      },
+      (error) => console.error(error)
+    );
+  }
+}

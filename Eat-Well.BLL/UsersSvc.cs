@@ -6,7 +6,9 @@ using Eat_Well.DAL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using Microsoft.Data.SqlClient;
+using System.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace Eat_Well.BLL
@@ -64,6 +66,7 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+        
         #region -- Create Users --
 
         public SingleRsp CreateUser(UsersReq u)
@@ -85,6 +88,7 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
         #region -- Update User --
 
         public SingleRsp UpdateUser(int id, UsersReq u)
@@ -179,9 +183,51 @@ namespace Eat_Well.BLL
 
                         };
             return user;
-            
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
 
+        #region -- Authenticate --
+        public Users AuthencicateUser(string username, string password)
+        {
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                return null;
 
+            var user = _rep.Context.Users.Where(x => x.Username == username).FirstOrDefault();
+
+            // check if username exists
+            if (user == null)
+                return null;
+
+            // check if password is correct
+            if (user.Password != password)
+                return null;
+
+            // authentication successful
+            return user;
+
+        }
+        #endregion
+        //===========================================================
+        //===========================================================
+
+        #region -- Authenticate --
+        public SingleRsp RegisterUser(UsersReq u)
+        {
+            var res = new SingleRsp();
+            Users user = new Users();
+            user.UserId = u.id;
+            user.Username = u.username;
+            user.Password = u.password;
+            user.Email = u.email;
+            user.FullName = u.full_name;
+            user.Phone = u.phone;
+            user.Address = u.address;
+            user.IsAdmin = false;
+            user.IsActive = u.is_active;
+            res = _rep.CreateUser(user);
+            return res;
         }
         #endregion
         //===========================================================

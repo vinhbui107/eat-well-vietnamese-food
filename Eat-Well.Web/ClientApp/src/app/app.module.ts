@@ -15,20 +15,26 @@ import { RegisterComponent } from "./shared/register/register.component";
 import { AboutComponent } from "./about/about.component";
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 import { CategoryDetailComponent } from "./category-detail/category-detail.component";
-import { AdminModule } from "./admin/admin.module";
+import { AdminModule } from "./admin.module";
+import { ProductAdminComponent } from "./product-admin/product-admin.component";
+import { UserAdminComponent } from "./user-admin/user-admin.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    CartComponent,
-    CheckoutComponent,
+
     FooterComponent,
     HeaderComponent,
+
+    HomeComponent,
+    AboutComponent,
+
     LoginComponent,
     RegisterComponent,
 
-    AboutComponent,
+    CartComponent,
+    CheckoutComponent,
+
     ProductDetailComponent,
     CategoryDetailComponent,
   ],
@@ -43,14 +49,16 @@ import { AdminModule } from "./admin/admin.module";
       { path: "about", component: AboutComponent },
       { path: "login", component: LoginComponent },
       { path: "signup", component: RegisterComponent },
-      { path: "product-detail", component: ProductDetailComponent },
+      { path: "product/:id", component: ProductDetailComponent },
+      { path: "category/:id", component: CategoryDetailComponent },
 
       // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
       { path: "check-out", component: CheckoutComponent },
 
-
       // Admin Router
+      { path: "admin/product", component: ProductAdminComponent },
+      { path: "admin/user", component: UserAdminComponent },
     ]),
   ],
   providers: [],

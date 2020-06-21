@@ -34,20 +34,27 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="true"
-              style="color: rgba(0, 0, 0, 0.7); opacity: 0.9; background-color: #F8F9FA;"
+              style="
+                color: rgba(0, 0, 0, 0.7);
+                opacity: 0.8;
+                background-color: #f8f9fa;
+                margin-top: 1px;
+              "
             >
               THỰC ĐƠN
               <span class="caret"></span>
             </button>
+
             <ul
               class="dropdown-menu"
               aria-labelledby="dropdownMenu1"
               *ngIf="Categories.total_record > 0"
             >
               <li *ngFor="let cate of Categories.data">
-                <a href="#">{{ cate.name }}</a>
+                <a (click)="getbyid(cate.id)">{{ cate.name }}</a>
               </li>
             </ul>
+
           </div>
 
           <li class="nav-item">
