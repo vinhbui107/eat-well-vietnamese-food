@@ -50,7 +50,8 @@ import { CommonComponent } from "./shared/common/common.component";
       { path: "about", component: AboutComponent },
       { path: "login", component: LoginComponent },
       { path: "signup", component: RegisterComponent },
-      { path: "product-detail", component: ProductDetailComponent },
+      { path: "product/:id", component: ProductDetailComponent },
+      { path: "category/:id", component: CategoryDetailComponent },
 
       // Access for Registered Users
       { path: "shopping-cart", component: CartComponent },
