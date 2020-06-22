@@ -14,8 +14,9 @@
 }
 .dropdown-menu li a {
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(245, 244, 244, 0.9);
 }
+
 .dropdown-menu {
   width: 170px !important;
 }
@@ -38,14 +39,15 @@
   text-decoration: none;
 }
 
-.dropdown-menu li:hover{
-  background-color: #F16534 !important;
+.dropdown-menu li:hover {
+  background-color: #b98cd3 !important;
   transition: 0.4s;
   margin-top: -8px;
   margin-left: -2px;
   margin-bottom: -10px;
   cursor: pointer;
 }
+
 .dropdown-toggle::after {
   display: none;
 }

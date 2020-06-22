@@ -17,13 +17,19 @@ export class HeaderComponent implements OnInit {
   };
   refeshdata: any;
 
+  Customer: any = {
+    id: Number,
+    username: "",
+  };
+
+  isLogin: boolean = false;
+
   constructor(
     private http: HttpClient,
     private router: Router,
     private route: ActivatedRoute,
-    @Inject("BASE_URL") baseUrl: string
-  ) // refesh data
-  {
+    @Inject("BASE_URL") baseUrl: string // refesh data
+  ) {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
@@ -43,6 +49,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.GetCategories(1);
+    this.checkUserLogin();
   }
 
   GetCategories(cPage) {
@@ -68,5 +75,20 @@ export class HeaderComponent implements OnInit {
       },
       (error) => console.error(error)
     );
+  }
+
+  checkUserLogin() {
+    var cusomerId = window.localStorage.getItem("customerId");
+    if (cusomerId != null) {
+      this.isLogin = true;
+      this.Customer.username = window.localStorage.getItem("username");
+    } else {
+      this.isLogin = false;
+    }
+  }
+
+  logout() {
+    window.localStorage.clear();
+    this.router.navigate(["/login"]);
   }
 }

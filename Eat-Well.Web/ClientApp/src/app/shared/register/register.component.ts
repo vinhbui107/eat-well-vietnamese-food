@@ -40,7 +40,7 @@ export class RegisterComponent implements OnInit {
         if (res.success) {
           console.log(res.id);
           this.router.navigate(["/login"]);
-          alert("Bạn đẫ đăng ký tài khoản thành công. <3");
+          alert("Bạn đăng ký tài khoản thành công. <3");
         }
       },
       (error) => {
