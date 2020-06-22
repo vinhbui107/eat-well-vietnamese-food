@@ -50,8 +50,11 @@
               aria-labelledby="dropdownMenu1"
               *ngIf="Categories.total_record > 0"
             >
-              <li *ngFor="let cate of Categories.data" 
-                (click)="getbyid(cate.id)">{{ cate.name }}
+              <li 
+                *ngFor="let cate of Categories.data"
+                (click)="getbyid(cate.id)"
+              >
+                {{ cate.name }}
               </li>
             </ul>
           </div>
@@ -83,11 +86,41 @@
               <i class="fas fa-shopping-cart"></i>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="!isLogin">
             <a class="nav-link" [routerLink]="['/login']">
               ĐĂNG NHẬP
             </a>
           </li>
+
+          <div class="nav-item dropdown" *ngIf="isLogin">
+            <button
+              class="btn btn-default dropdown-toggle"
+              type="button"
+              id="dropdownMenu1"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="true"
+              style="
+                color: rgba(0, 0, 0, 0.7);
+                opacity: 1;
+                background-color: #f8f9fa;
+                margin-top: 1px;
+                text-transform: uppercase;
+              "
+            >
+              {{ Customer.username }}
+              <span class="caret"></span>
+            </button>
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li>
+                Cập nhật thông tin
+              </li>
+              <li>
+                <a (click)="logout()" style="color: black;">Đăng xuất</a>
+              </li>
+            </ul>
+          </div>
         </ul>
       </div>
     </div>
