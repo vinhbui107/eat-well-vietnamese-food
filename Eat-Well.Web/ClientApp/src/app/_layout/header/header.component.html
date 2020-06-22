@@ -50,8 +50,8 @@
               aria-labelledby="dropdownMenu1"
               *ngIf="Categories.total_record > 0"
             >
-              <li *ngFor="let cate of Categories.data">
-                <a (click)="getbyid(cate.id)">{{ cate.name }}</a>
+              <li *ngFor="let cate of Categories.data" 
+                (click)="getbyid(cate.id)">{{ cate.name }}
               </li>
             </ul>
           </div>
