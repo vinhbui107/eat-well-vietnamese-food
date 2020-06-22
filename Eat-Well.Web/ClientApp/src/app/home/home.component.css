@@ -119,10 +119,10 @@
 }
 .subcat{
     background-color: #F16534;
-    position: relative;
-    padding: 0 0 0 0;
+    position: absolute;
     transition: 0.4s;
     width: 130px;
+    height: 100%;
     border: none !important;
 }
 .subcat a{
@@ -154,6 +154,7 @@
 }
 .btn:hover{
     background-color: #f71a25;
+    transition: 0.4s;
 }
 /*animation for box */
 .box a{
