@@ -6,11 +6,17 @@
 .box-price {
     border: 2px solid #eaeaea;
     margin-bottom: 50px;
-    width: 350px;
+	width: 300px;
+	height: 250px;
     margin: 0px;
     padding: 0px;
     margin-left: 20px;
-    height: 350px;
+   
+}
+.box-price li{
+	list-style: none;
+	position: relative;
+	right: 15px ;
 }
 .imgvote{
     background-color: #F9F9F9;
@@ -28,8 +34,10 @@
 }
 .i-select{
     position: absolute;
-    margin-left: 10px ;
+	margin-left: 30px ;
+	margin-bottom: 8px;
 }
+
 .price{
     color: red;
     font-size: 20px;
@@ -222,7 +230,6 @@
     font-size: 20px;
     transition: 0.3s;
 }
-
 
 /* Tạo ba cột bằng nhau, float cạnh nhau */
 .column {
