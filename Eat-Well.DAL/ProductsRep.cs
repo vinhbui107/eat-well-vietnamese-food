@@ -120,12 +120,12 @@ namespace Eat_Well.DAL
             {
                 // remove option of that product
                 db.ProductOptions.Remove(option_of_product);
-                db.SaveChangesAsync();
+                db.SaveChanges();
             }
 
             // we need remove options of product before remove product
             // now we remove product user want
-            db.Products.Remove(product);
+            db.Products.RemoveRange(product);
             
             db.SaveChangesAsync();
             return true;
