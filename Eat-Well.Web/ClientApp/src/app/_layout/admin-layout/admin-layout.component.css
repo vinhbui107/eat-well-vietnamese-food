@@ -1,6 +1,5 @@
 .admin-layout{
     display: flex;
-    background-image: url('https://www.xmple.com/wallpaper/violet-blue-gradient-linear-1920x1080-c2-e2b6ff-b6c7ff-a-60-f-14.svg');
 }
 .content{
     flex-grow: 1;
