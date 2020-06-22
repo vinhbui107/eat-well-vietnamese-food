@@ -33,13 +33,16 @@
 }
 .foodList h1{
     font-size: 25px;
-    color: #FFFFF2;
+    color: #b30570;
     position: absolute;
     line-height: 2;
     border-radius: 5px !important;
     text-align: center;
-    letter-spacing: 4px;
+    letter-spacing: 2px;
+    margin-left: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif !important;
 }
+
 .foodlist-item a{
     text-decoration: none;
     color: black;
@@ -56,24 +59,6 @@
     height: 170px; 
     display: block;
     margin: 20px auto;
-}
-.subcat{
-    background-color: #F16534;
-    position: relative;
-    left: 94%;
-    padding: 0 0 0 0;
-    transition: 0.4s;
-    width: 130px;
-    border: none !important;
-}
-.subcat a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 25px ;
-}
-.subcat:hover{
-    background-color: #C6000D;
-    transition: 0.4s;
 }
 .options{
     font-size: 14px;
@@ -117,34 +102,18 @@
 .box:hover .buy{
     display: block;
 }
-.subcat{
-    background-color: #F16534;
-    position: absolute;
-    transition: 0.4s;
-    width: 130px;
-    height: 100%;
-    border: none !important;
-}
-.subcat a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 25px ;
-}
-.subcat:hover{
-    background-color: #C6000D;
-    transition: 0.4s;
-}
 /*newsletter*/
 .newsletter{
     display: flex;
     justify-content: space-between;
-    background-color: #00522C;
+    border-radius: 10px;
     margin: 60px 0px ;
+    border: 2px solid #A365BC;
 }
 .newsletter h4{
     position: relative;
     top: 20px;
-    color: #fff;
+    color: rgb(22, 21, 21);
 }
 .input-group{
     float: right;
