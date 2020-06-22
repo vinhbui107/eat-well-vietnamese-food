@@ -33,8 +33,8 @@ export class LoginComponent implements OnInit {
         (result) => {
           var res: any = result;
           if (res.id != null) {
-            console.log(res.id);
-            localStorage.setItem("customerId", JSON.stringify(res.id));
+            localStorage.setItem("customerId", res.id);
+            localStorage.setItem("username", x.username);
             this.router.navigate(["/"]);
             alert("Đăng nhập thành công.");
           }

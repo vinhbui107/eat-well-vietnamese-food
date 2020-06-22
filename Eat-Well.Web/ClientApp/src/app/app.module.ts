@@ -31,6 +31,7 @@ import { OrderAdminComponent } from "./admin/order-admin/order-admin.component";
 
 import { routing } from "./app.routing";
 import { HttpClientModule } from "@angular/common/http";
+import { ProductOptionAdminComponent } from './admin/product-option-admin/product-option-admin.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, routing, HttpClientModule],
@@ -60,6 +61,7 @@ import { HttpClientModule } from "@angular/common/http";
     SiteLayoutComponent,
     OrderUserComponent,
     OrderAdminComponent,
+    ProductOptionAdminComponent,
   ],
   bootstrap: [AppComponent],
 })
