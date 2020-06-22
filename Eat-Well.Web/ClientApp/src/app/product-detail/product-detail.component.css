@@ -1,11 +1,12 @@
 #gallery{
     display: flex;
-    justify-content: space-between;  
+	justify-content: space-between;  
+	margin-bottom: 100%;
 }
 .box-price {
     border: 2px solid #eaeaea;
     margin-bottom: 50px;
-    width: 1300px;
+    width: 350px;
     margin: 0px;
     padding: 0px;
     margin-left: 20px;
@@ -221,3 +222,13 @@
     font-size: 20px;
     transition: 0.3s;
 }
+
+
+/* Tạo ba cột bằng nhau, float cạnh nhau */
+.column {
+	float: left;
+	width: 33.33%;
+	padding: 15px;
+  }
+
+ 

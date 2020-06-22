@@ -95,7 +95,6 @@ namespace Eat_Well.BLL
         {
             var res = new SingleRsp();
             var user = All.FirstOrDefault(x => x.UserId.Equals(id));
-            user.UserId = u.id;
             user.Username = u.username;
             user.Password = u.password;
             user.Email = u.email;

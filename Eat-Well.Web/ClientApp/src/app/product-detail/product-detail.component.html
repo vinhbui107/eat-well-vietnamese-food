@@ -1,93 +1,74 @@
-<div id="gallery" class="wrapper">
-  <div class="picture">
-    <a class="fancybox" rel="gallery" title="" tabindex="0">
-      <img
-        src="{{ Product.photo }}"
-        alt="GỎI CỦ HŨ DỪA TÔM THỊT"
-        title="GỎI CỦ HŨ DỪA TÔM THỊT"
-    /></a>
-  </div>
-  <div class="list-option">
-    <div>
-      <h2>{{ Product.name }}</h2>
+<div class="row">
+  <div class="column">
+    <div id="gallery">
+      <div class="picture">
+        <a class="fancybox" rel="gallery" title="" tabindex="0">
+          <img
+            src="{{ Product.photo }}"
+            alt="GỎI CỦ HŨ DỪA TÔM THỊT"
+            title="GỎI CỦ HŨ DỪA TÔM THỊT"
+        /></a>
+      </div>
     </div>
-    <p style="text-align: justify;">{{ Product.description }}</p>
-    <div class="options">
-      <ul>
+  </div>
+
+  <div class="column">
+    <div class="list-option">
+      <div>
+  
+  
+        <h2>{{ Product.name }}</h2>
+      </div>
+      <div>
+  
+  
+  
+        <p style="text-align: justify;">{{ Product.description }}</p>
+      </div>
+        
+      <div class="options">
+        <ul>
+          <li>
+            <label style="margin-right: 15px;">Mã SP: </label>
+            <span>{{ Product.slug }}</span>
+          </li>
+          <li>
+            <label style="margin-right: 15px;">Lượt xem: </label>
+            <span>11946</span>
+          </li>
+        </ul>
+      </div>
+</div>
+  </div>
+
+  <div class="column">
+    <div class="box-price">
+          
+      <div class="imgvote text-center">
+        <label>Giá sản phẩm </label>
+      </div>
+
+
+      <ul *ngFor="let po of Product.options">
         <li>
-          <label style="margin-right: 15px;">Mã SP: </label>
-          <span>{{ Product.slug }}</span>
-        </li>
-        <li>
-          <label style="margin-right: 15px;">Lượt xem: </label>
-          <span>11946</span>
+          <label> {{ po.name }} : </label>
+          <span class="price"> {{ po.price }} <span class="unit">đ</span></span>
         </li>
       </ul>
-    </div>
-  </div>
-  <div class="box-price">
-    <div class="imgvote text-center">
-      <label>Giá sản phẩm </label>
-    </div>
-    <ul *ngFor="let po of Product.options">
-      <li>
-        <label> {{ po.name }} : </label>
-        <span class="price"> {{ po.price }} <span class="unit">đ</span></span>
-      </li>
-    </ul>
-    <div class="button_group">
-      <button class="btn-addtocart" type="button" rel="246">
-        <a href="#"><i class="fas fa-plus"></i>Thêm vào giỏ hàng</a>
-      </button>
-      <button class="btn-buynow" type="submit">
-        <a href="#"><i class="fas fa-cart-plus"></i>Mua ngay</a>
-      </button>
-      <button class="btn-back-home"><a href="#">Mua thêm món khác</a></button>
+
+
+      <div class="button_group">
+        <button class="btn-addtocart" type="button" rel="246">
+          <a href="#"><i class="fas fa-plus"></i>Thêm vào giỏ hàng</a>
+        </button>
+        <button class="btn-buynow" type="submit">
+          <a href="#"><i class="fas fa-cart-plus"></i>Mua ngay</a>
+        </button>
+        <button class="btn-back-home"><a href="#">Mua thêm món khác</a></button>
+      </div>
+
+
+
     </div>
   </div>
 </div>
-<section class="foodList">
-  <!--content-->
-  <h1 class="text-black">Có thể bạn sẽ thích</h1>
-  <hr />
-  <div class="container">
-    <div class="row foodlist-item text-center">
-      <div class="col-3">
-        <img
-          src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg"
-          alt=""
-        />
-        <h4>Gỏi đu đủ</h4>
-        <p class="font-weight-bold">$10</p>
-        <span><a href="#">XEM</a></span>
-      </div>
-      <div class="col-3">
-        <img
-          src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg"
-          alt=""
-        />
-        <h4>Gỏi đu đủ</h4>
-        <p class="font-weight-bold">$10</p>
-        <span><a href="#">XEM </a></span>
-      </div>
-      <div class="col-3">
-        <img
-          src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg"
-          alt=""
-        />
-        <h4>Gỏi đu đủ</h4>
-        <p class="font-weight-bold">$10</p>
-        <span><a href="#">XEM </a></span>
-      </div>
-      <div class="col-3">
-        <img
-          src="https://flyfood.vn/vnt_upload/product/06_2020/thumbs/370_crop_Untitled-1.jpg"
-          alt=""
-        />
-        <h4>Gỏi đu đủ</h4>
-        <p class="dollar font-weight-bold">$10</p>
-        <span><a href="#">XEM </a></span>
-      </div>
-    </div>
-  </div>
-</section>

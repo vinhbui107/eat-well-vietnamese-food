@@ -37,16 +37,14 @@
   display: block;
   text-decoration: none;
 }
-.dropdown-menu li a:hover {
-  color: rgb(247, 239, 239);
-  transition: all 0.4s;
-}
+
 .dropdown-menu li:hover{
   background-color: #F16534 !important;
   transition: 0.4s;
   margin-top: -8px;
   margin-left: -2px;
   margin-bottom: -10px;
+  cursor: pointer;
 }
 .dropdown-toggle::after {
   display: none;

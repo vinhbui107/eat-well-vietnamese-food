@@ -1,1 +1,146 @@
-<p>profile works!</p>
+<div class="container">
+  <h1>Thông tin User</h1>
+  <hr />
+  <div class="row">
+    <!-- edit form column -->
+    <div class="col-md-9 personal-info">
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">User name:</label>
+          <div class="col-lg-8">
+            <input
+              class="form-control"
+              type="text"
+              value="{{ User.username }}"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Full name:</label>
+          <div class="col-lg-8">
+            <input
+              class="form-control"
+              type="text"
+              value="{{ User.full_name }}"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+            <input class="form-control" type="text" value="{{ User.email }}" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-3 control-label">Address:</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              type="text"
+              value="{{ User.address }}"
+            />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Phone:</label>
+          <div class="col-md-8">
+            <input class="form-control" type="text" value="{{ User.phone }}" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Password:</label>
+          <div class="col-md-8">
+            <input
+              class="form-control"
+              type="text"
+              value="{{ User.password }}"
+            />
+          </div>
+        </div>
+      </form>
+      <button class="btn btn-info btn-lg" (click)="openModal(false, User)">
+        Edit
+      </button>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          Update User
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-4">User Name</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.username" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-4">Full Name</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.full_name" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-4">Email</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.email" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-4">Address</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.address" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-4">Phone</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.phone" />
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-4">Password</div>
+          <div class="col-8">
+            <input class="form-control" [(ngModel)]="User.password" />
+          </div>
+        </div>
+        <br />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="saveProfile()">
+          Save
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -105,30 +105,6 @@ namespace Eat_Well.DAL
         //=================================================================
         //=================================================================
 
-        #region -- Delete Product --
-        public SingleRsp DeleteProductOptions(ProductOptions po)
-        {
-            var res = new SingleRsp();
-            using (var context = new EatWellDBContext())
-            {
-                using (var tran = context.Database.BeginTransaction())
-                {
-                    try
-                    {
-                        var t = context.ProductOptions.Remove(po);
-                        context.SaveChanges();
-                        tran.Commit();
-                    }
-                    catch (Exception ex)
-                    {   
-                        tran.Rollback();
-                        res.SetError(ex.StackTrace);
-                    }
-                }
-            }
-            return res;
-        }
-        #endregion
         //=================================================================
         //=================================================================
     }

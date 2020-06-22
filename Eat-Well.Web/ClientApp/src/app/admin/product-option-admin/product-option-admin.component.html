@@ -1,32 +1,27 @@
 <button class="btn btn-primary" (click)="openModal(true, null)">
-  Add New Product
+  Thêm mới Size Sản phẩm
 </button>
 <hr />
-<table class="table table-dark" *ngIf="Products.total_record > 0">
+<table class="table table-dark" *ngIf="ProductOptions.total_record > 0">
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Product Name</th>
-      <th scope="col">Category Name</th>
-      <th scope="col">Active</th>
+      <th scope="col">Tên Món Ăn</th>
+      <th scope="col">Size</th>
+      <th scope="col">Giá</th>
       <th scope="col">Action</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let product of Products.data">
-      <td>{{ product.id }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.category.name }}</td>
-      <td>{{ product.is_active }}</td>
+    <tr *ngFor="let po of ProductOptions.data">
+      <td>{{ po.product_id }}</td>
+      <td>{{ po.product_name }}</td>
+      <td>{{ po.option_name }}</td>
+      <td>{{ po.price }}</td>
+
       <td>
-        <button class="btn btn-info btn-sm" (click)="openModal(false, product)">
-          Edit
-        </button>
-        <button
-          class="btn btn-danger btn-sm"
-          (click)="deleteProduct(product.id)"
-        >
-          Delete
+        <button class="btn btn-info btn-sm" (click)="openModal(false, po)">
+          Sửa
         </button>
       </td>
     </tr>
@@ -47,13 +42,13 @@
       </a>
     </li>
     <li class="page-item">
-      <a class="page-link">{{ Products.page }}</a>
+      <a class="page-link">{{ ProductOptions.page }}</a>
     </li>
     <li class="page-item">
-      <a class="page-link">{{ Products.page + 1 }}</a>
+      <a class="page-link">{{ ProductOptions.page + 1 }}</a>
     </li>
     <li class="page-item">
-      <a class="page-link">{{ Products.page + 2 }}</a>
+      <a class="page-link">{{ ProductOptions.page + 2 }}</a>
     </li>
     <li class="page-item">
       <a
@@ -81,10 +76,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" *ngIf="!isEdit" id="exampleModalLabel">
-          Add New Product
+          Thêm giá món ăn
         </h5>
         <h5 class="modal-title" *ngIf="isEdit" id="exampleModalLabel">
-          Update Product
+          Cập nhật giá món ăn
         </h5>
         <button
           type="button"
@@ -96,68 +91,50 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row" *ngIf="isEdit">
-          <div class="col-4">Product Id</div>
+        <div class="row">
+          <div class="col-4">Option Id</div>
           <div class="col-8">
-            <input class="form-control" [(ngModel)]="Product.id" />
+            <input class="form-control" [(ngModel)]="ProductOption.id" />
           </div>
         </div>
         <br />
         <div class="row">
-          <div class="col-4">Category Id</div>
+          <div class="col-4">Product Id</div>
           <div class="col-8">
             <input
               class="form-control"
-              type="number"
-              [(ngModel)]="Product.category.id"
+              [(ngModel)]="ProductOption.product_id"
             />
           </div>
         </div>
         <br />
-        <div class="row">
-          <div class="col-4">Product Name</div>
-          <div class="col-8">
-            <input class="form-control" [(ngModel)]="Product.name" />
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-4">Product Photo</div>
-          <div class="col-8">
-            <input class="form-control" [(ngModel)]="Product.photo" />
-          </div>
-        </div>
-        <br />
-        <div class="row">
-          <div class="col-4">Product Descripton</div>
-          <div class="col-8">
-            <input class="form-control" [(ngModel)]="Product.description" />
-            <p></p>
-          </div>
-        </div>
-        <div class="row" *ngFor="let product of Product.options">
-          <div class="col-4">{{ product.name }}</div>
 
+        <br />
+        <div class="row">
+          <div class="col-4">Price</div>
           <div class="col-8">
-            <input class="form-control" [(ngModel)]="product.price" />
-            <p></p>
+            <input class="form-control" [(ngModel)]="ProductOption.price" />
           </div>
         </div>
         <br />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
+          Đóng
         </button>
-        <button 
+        <button
           type="button"
           class="btn btn-primary"
-          (click)="saveProduct(Product.id)"
+          (click)="saveProductOptions(ProductOption.id)"
         >
-          Save
+          Lưu
         </button>
-        <button type="button" class="btn btn-success" (click)="addProduct()">
-          Add
+        <button
+          type="button"
+          class="btn btn-success"
+          (click)="addProductOptions()"
+        >
+          Thêm mới
         </button>
       </div>
     </div>
