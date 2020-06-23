@@ -13,7 +13,6 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 import { CartComponent } from "./cart/cart.component";
-import { CheckoutComponent } from "./checkout/checkout.component";
 
 import { DashboardComponent } from "./admin/dashboard/dashboard.component";
 import { UserAdminComponent } from "./admin/user-admin/user-admin.component";
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
       { path: "category/:id", component: CategoryDetailComponent },
       { path: "product/:id", component: ProductDetailComponent },
       { path: "cart", component: CartComponent },
-      { path: "checkout", component: CheckoutComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "profile", component: ProfileComponent },
