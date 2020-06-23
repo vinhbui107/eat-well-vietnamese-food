@@ -23,6 +23,7 @@ import { ProductOptionAdminComponent } from "./admin/product-option-admin/produc
 import { ProfileComponent } from "./profile/profile.component";
 import { RevenueAdminComponent } from "./admin/revenue-admin/revenue-admin.component";
 import { OrderDetailAdminComponent } from "./admin/order-detail-admin/order-detail-admin.component";
+import { SearchProductComponent } from "./search-product/search-product.component";
 
 const appRoutes: Routes = [
   //Site routes goes here
@@ -39,6 +40,7 @@ const appRoutes: Routes = [
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
       { path: "profile", component: ProfileComponent },
+      { path: "search-product", component: SearchProductComponent },
     ],
   },
 

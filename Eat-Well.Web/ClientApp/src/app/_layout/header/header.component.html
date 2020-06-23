@@ -70,15 +70,18 @@
               <input
                 class="form-control mr-sm-2"
                 type="search"
+                [(ngModel)]="search.key"
+                [ngModelOptions]="{ standalone: true }"
                 placeholder="Bạn muốn mua gì"
                 aria-label="Bạn muốn mua gì"
               />
-              <button
+              <a
                 class="btn btn-outline-secondary my-2 my-sm-0 pr-2"
                 type="submit"
+                (click)="searchProduct()"
+                [routerLink]="['/search-product']"
+                >TÌM KIẾM</a
               >
-                TÌM KIẾM
-              </button>
             </form>
           </li>
           <li class="nav-item ml-2">

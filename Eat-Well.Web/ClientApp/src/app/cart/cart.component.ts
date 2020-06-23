@@ -85,11 +85,17 @@ export class CartComponent implements OnInit {
   }
 
   createOrder() {
+    var d = new Date();
+    var month = String(d.getMonth() + 1);
+    var year = String(d.getFullYear());
+    var day = String(d.getDate());
+    var date = String(year + "-" + "0" + month + "-" + day + "T00:00:00");
+    console.log(date);
     var order = {
       user_id: Number(window.localStorage.getItem("customerId")),
       order_total: Number(total()),
       phone: this.UserInforCheckout.phone,
-      date: "2020-06-23T13:37:29.739Z",
+      date: date,
       is_completed: false,
       shipping_address: this.UserInforCheckout.address,
       description: this.UserInforCheckout.description,
