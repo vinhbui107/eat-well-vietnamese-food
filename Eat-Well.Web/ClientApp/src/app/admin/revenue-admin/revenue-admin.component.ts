@@ -11,6 +11,10 @@ export class RevenueAdminComponent implements OnInit {
   Revenue: any = {
     data: [],
   };
+
+  total: any = {
+    total: 0,
+  };
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -19,7 +23,10 @@ export class RevenueAdminComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.GetRevenue(6, 2020);
+    var d = new Date();
+    var month = d.getMonth() + 1;
+    var year = d.getFullYear();
+    this.GetRevenue(month, year);
   }
 
   GetRevenue(Month, Year) {
