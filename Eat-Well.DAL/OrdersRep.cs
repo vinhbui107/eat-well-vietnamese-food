@@ -73,6 +73,8 @@ namespace Eat_Well.DAL
                     }
                 }
             }
+            EatWellDBContext db = new EatWellDBContext();
+            res.Data = db.Orders.OrderByDescending(x => x.OrderId).Take(1).FirstOrDefault();
             return res;
         }
 
