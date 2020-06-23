@@ -1,0 +1,33 @@
+<section class="foodList" style="margin-bottom: 30px !important;">
+  <!--content-->
+<div class="main">
+  <hr>
+  <!-- product list -->
+<div class="container">
+<div class="row foodlist-item">
+  <div class="col-3 box" *ngFor="let product of searchProducts">
+    <a (click)="getIdProduct(product.id)">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+
+    <img src="{{ product.photo }}">
+
+    <span>
+      <h6 style="margin-right: 15px !important;">{{ product.name }}</h6>
+    </span>
+    <div class="options">
+    </div>
+      <div class="buy">
+        <a class="nav-link">
+          <i class="fas fa-shopping-cart"></i>
+        </a>
+      </div>
+    </a>
+  </div>
+  </div>
+</div>
+</div>
+  <!-- product list -->
+</section>

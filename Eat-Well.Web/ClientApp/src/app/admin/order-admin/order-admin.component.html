@@ -21,7 +21,7 @@
       <td>
         <div class="form-check">
           <label class="form-check-label">
-            <input type="checkbox" [ngModel]="false" /> No
+            <input type="checkbox" [ngModel]="ord.is_completed" />
           </label>
         </div>
       </td>
@@ -129,7 +129,7 @@
           <div class="col-8">
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" [ngModel]="false" /> No
+                <input type="checkbox" [(ngModel)]="Order.is_completed" />
               </label>
             </div>
           </div>
