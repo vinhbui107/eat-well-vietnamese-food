@@ -31,7 +31,8 @@ import { OrderAdminComponent } from "./admin/order-admin/order-admin.component";
 
 import { routing } from "./app.routing";
 import { HttpClientModule } from "@angular/common/http";
-import { ProductOptionAdminComponent } from './admin/product-option-admin/product-option-admin.component';
+import { ProductOptionAdminComponent } from "./admin/product-option-admin/product-option-admin.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, routing, HttpClientModule],
@@ -46,6 +47,7 @@ import { ProductOptionAdminComponent } from './admin/product-option-admin/produc
 
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
 
     CartComponent,
     CheckoutComponent,
