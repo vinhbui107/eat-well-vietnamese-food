@@ -6,13 +6,13 @@ namespace Eat_Well.Common.Req
 {
     public class OrdersReq
     {
-        public int OrderId { get; set; }
-        public int UserId { get; set; }
-        public int OrderTotal { get; set; }
-        public string OrderPhone { get; set; }
-        public DateTime? OrderDate { get; set; }
-        public bool IsCompleted { get; set; }
-        public string ShippingAddress { get; set; }
-        public string OrderDescription { get; set; }
+        public int id { get; set; }
+        public int user_id { get; set; }
+        public int order_total { get; set; }
+        public string phone { get; set; }
+        public DateTime? date { get; set; }
+        public bool is_completed { get; set; }
+        public string shipping_address { get; set; }
+        public string description { get; set; }
     }
 }

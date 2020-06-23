@@ -25,10 +25,11 @@ namespace Eat_Well.Web.Controllers
 
         // Get Method: api/Orders/5
         [HttpGet("{Id}")]
-        public IActionResult getOrderById(int Id)
+        public IActionResult getOrdersById(int Id)
         {
             var res = new SingleRsp();
-            res = _svc.Read(Id);
+            var cate = _svc.GetOrderById(Id);
+            res.Data = cate;
             return Ok(res);
         }
 
@@ -52,10 +53,10 @@ namespace Eat_Well.Web.Controllers
         }
 
         // Put Method: api/Orders/5
-        [HttpPut]
-        public IActionResult UpdateOrders([FromBody]OrdersReq req)
+        [HttpPut("{Id}")]
+        public IActionResult UpdateOrders(int Id, [FromBody]OrdersReq req)
         {
-            var res = _svc.UpdateOrders(req);
+            var res = _svc.UpdateOrders(Id, req);
             return Ok(res);
         }
 
@@ -79,5 +80,8 @@ namespace Eat_Well.Web.Controllers
         }
 
         private readonly OrdersSvc _svc;
+
+
+
     }
 }

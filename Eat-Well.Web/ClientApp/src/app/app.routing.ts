@@ -40,8 +40,7 @@ const appRoutes: Routes = [
       { path: "checkout", component: CheckoutComponent },
       { path: "login", component: LoginComponent },
       { path: "register", component: RegisterComponent },
-      { path: "profile/:id", component: ProfileComponent },
-      { path: "user/:id/order-history", component: OrderUserComponent },
+      { path: "profile", component: ProfileComponent },
     ],
   },
 

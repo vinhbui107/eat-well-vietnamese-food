@@ -69,14 +69,14 @@ namespace Eat_Well.BLL
         {
             var res = new SingleRsp();
             Orders orders = new Orders();
-            orders.OrderId = ord.OrderId;
-            orders.UserId = ord.UserId;
-            orders.OrderTotal = ord.OrderTotal;
-            orders.OrderPhone = ord.OrderPhone;
-            orders.OrderDate = ord.OrderDate;
-            orders.IsCompleted = ord.IsCompleted;
-            orders.ShippingAddress = ord.ShippingAddress;
-            orders.OrderDescription = ord.OrderDescription;
+            orders.OrderId = ord.id;
+            orders.UserId = ord.user_id;
+            orders.OrderTotal = ord.order_total;
+            orders.OrderPhone = ord.phone;
+            orders.OrderDate = ord.date;
+            orders.IsCompleted = ord.is_completed;
+            orders.ShippingAddress = ord.shipping_address;
+            orders.OrderDescription = ord.description;
             res = _rep.CreateOrders(orders);
             return res;
         }
@@ -86,18 +86,18 @@ namespace Eat_Well.BLL
         //===========================================================
         #region -- Update Orders --
 
-        public SingleRsp UpdateOrders(OrdersReq ord)
+        public SingleRsp UpdateOrders(int id, OrdersReq ord)
         {
             var res = new SingleRsp();
             Orders orders = new Orders();
-            orders.OrderId = ord.OrderId;
-            orders.UserId = ord.UserId;
-            orders.OrderTotal = ord.OrderTotal;
-            orders.OrderPhone = ord.OrderPhone;
-            orders.OrderDate = ord.OrderDate;
-            orders.IsCompleted = ord.IsCompleted;
-            orders.ShippingAddress = ord.ShippingAddress;
-            orders.OrderDescription = ord.OrderDescription;
+            orders.OrderId = ord.id;
+            orders.UserId = ord.user_id;
+            orders.OrderTotal = ord.order_total;
+            orders.OrderPhone = ord.phone;
+            orders.OrderDate = ord.date;
+            orders.IsCompleted = ord.is_completed;
+            orders.ShippingAddress = ord.shipping_address;
+            orders.OrderDescription = ord.description;
             res = _rep.UpdateOrders(orders);
             return res;
         }
@@ -119,47 +119,34 @@ namespace Eat_Well.BLL
         #region -- Get Order With Pagination --
         public object GetAllOrdersWithPagination(int page, int size)
         {
+            var ord = from o in _rep.Context.Orders
+                      join u in _rep.Context.Users on o.UserId equals u.UserId
 #pragma warning disable CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-            var pro = All.Where(x => x.OrderId != null)
+                       where o.OrderId != null
 #pragma warning restore CS0472 // The result of the expression is always the same since a value of this type is never equal to 'null'
-               .Join(_rep.Context.Users, a => a.UserId, b => b.UserId, (a, b) => new
-               {
-                   a.OrderId,
-                   a.UserId,
-                   a.OrderTotal,
-                   a.OrderPhone,
-                   a.OrderDate,
-                   a.IsCompleted,
-                   a.ShippingAddress,
-                   a.OrderDescription,
-                   Username = b.Username,
-               })
-               //.Join(_rep.Context.OrderDetails, a => a.OrderId, b => b.OrderId, (a, b) => new
-               //{
-               //    a.OrderId,
-               //    a.UserId,
-               //    a.OrderTotal,
-               //    a.OrderPhone,
-               //    a.OrderDate,
-               //    a.OrderStatus,
-               //    a.ShippingAddress,
-               //    a.OrderDescription,
-               //    a.Username,
-               //    Price = b.Price,
-               //})
-               .OrderBy(x => x.OrderId);
-
+                       select new
+                       {
+                          id = o.OrderId,
+                          user_id = o.UserId,
+                          username = u.Username,
+                          order_total  = o.OrderTotal,
+                          phone = o.OrderPhone,
+                          date = o.OrderDate,
+                          is_completed = o.IsCompleted,
+                          shipping_address = o.ShippingAddress,
+                          description = o.OrderDescription
+                       };
             var offset = (page - 1) * size;
-            var total = pro.Count();
+            var total = ord.Count();
             int totalpage = (total % size) == 0 ? (total / size) : (int)((total / size) + 1);
-            var data = pro.OrderBy(x => x.OrderId).Skip(offset).Take(size).ToList();
+            var data = ord.OrderBy(x => x.id).Skip(offset).Take(size).ToList();
             var res = new
             {
-                Data = data,
-                TotalRecord = total,
-                TotalPage = totalpage,
-                Page = page,
-                Size = size
+                data = data,
+                total_record = total,
+                total_page = totalpage,
+                page = page,
+                size = size
             };
             return res;
         }
@@ -174,5 +161,35 @@ namespace Eat_Well.BLL
             return _rep.getRevenueWithMonth(month, year);
         }
         #endregion
+
+
+        #region -- Get Order By ID -- 
+        public object GetOrderById(int id)
+        {
+
+            var user = (from o in _rep.Context.Orders
+                       join u in _rep.Context.Users on o.UserId equals u.UserId
+                       join od in _rep.Context.OrderDetails on o.OrderId equals od.OrderId
+                       where o.OrderId == id
+                       select new
+                       {
+                           id = o.OrderId,
+                           user_name = u.Username,
+                           phone = o.OrderPhone,
+                           date = o.OrderDate,
+                           is_completed = o.IsCompleted,
+                           shipping_address = o.ShippingAddress,
+                           description = o.OrderDescription,
+                           total = (od.Price * od.Quantity)
+                       });
+
+            return user;
+
+
+
+        }
+        #endregion
+
+
     }
 }
