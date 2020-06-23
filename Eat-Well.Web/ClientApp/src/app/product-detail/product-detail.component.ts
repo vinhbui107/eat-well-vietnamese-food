@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
-
+import { add, total } from "cart-localstorage";
 @Component({
   selector: "app-product-detail",
   templateUrl: "./product-detail.component.html",
@@ -28,7 +28,6 @@ export class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     const id = this._Activatedroute.snapshot.paramMap.get("id");
-    console.log(id);
     this.getproductbyid(id);
   }
 
@@ -41,5 +40,11 @@ export class ProductDetailComponent implements OnInit {
       },
       (error) => console.error(error)
     );
+  }
+
+  AddToCart(id, name) {
+    var price = (<HTMLInputElement>document.getElementById("size")).value;
+    window.location.reload();
+    add({ id: id, name: String(name), price: price }, 1);
   }
 }

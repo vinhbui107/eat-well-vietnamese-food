@@ -15,14 +15,12 @@
   <div class="column">
     <div class="list-option">
       <div>
-
         <h2>{{ Product.name }}</h2>
       </div>
       <div>
-  
         <p style="text-align: justify;">{{ Product.description }}</p>
       </div>
-        
+
       <div class="options">
         <ul>
           <li>
@@ -35,16 +33,14 @@
           </li>
         </ul>
       </div>
-</div>
+    </div>
   </div>
 
   <div class="column">
     <div class="box-price">
-          
       <div class="imgvote text-center">
         <label>Giá sản phẩm </label>
       </div>
-
 
       <ul *ngFor="let po of Product.options">
         <li>
@@ -56,24 +52,26 @@
       <li>
         <label style="margin-left: 40px;">Chọn size </label>
         <span class="i-select">
-          <select name="size" id="size" class="form-control">
-            <option value="1">Size lớn</option>
-            <option value="2">Size chuẩn</option>
+          <select id="size" class="form-control">
+            <option value="{{ Product.options[0].price }}">Size Chuẩn</option>
+            <option value="{{ Product.options[1].price }}">Size Lớn</option>
           </select>
         </span>
       </li>
     </div>
 
-      <div class="button_group">
-        <button class="btn-addtocart" type="button" rel="246">
-          <a href="#"><i class="fas fa-plus"></i>Thêm vào giỏ hàng</a>
-        </button>
-        <button class="btn-buynow" type="submit">
-          <a href="#"><i class="fas fa-cart-plus"></i>Mua ngay</a>
-        </button>
-        <button class="btn-back-home"><a href="#">Mua thêm món khác</a></button>
-      </div>
-
-
+    <div class="button_group">
+      <button class="btn-addtocart" type="button" rel="246">
+        <a (click)="AddToCart(Product.id, Product.name)"
+          ><i class="fas fa-plus"></i>Thêm vào giỏ hàng</a
+        >
+      </button>
+      <button class="btn-buynow" type="submit">
+        <a [routerLink]="['/cart']"><i class="fas fa-cart-plus"></i>Mua ngay</a>
+      </button>
+      <button class="btn-back-home">
+        <a [routerLink]="['/']">Mua thêm món khác</a>
+      </button>
+    </div>
   </div>
 </div>

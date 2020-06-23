@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { HttpClient, HttpParams } from "@angular/common/http";
 import { Router, ActivatedRoute, NavigationEnd } from "@angular/router";
+import { add, total, list } from "cart-localstorage";
 
 @Component({
   selector: "app-header",
@@ -20,6 +21,10 @@ export class HeaderComponent implements OnInit {
   Customer: any = {
     id: Number,
     username: "",
+  };
+
+  Cart: any = {
+    quantity: 0,
   };
 
   isLogin: boolean = false;
@@ -50,6 +55,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.GetCategories(1);
     this.checkUserLogin();
+    this.countCart();
   }
 
   GetCategories(cPage) {
@@ -90,5 +96,16 @@ export class HeaderComponent implements OnInit {
   logout() {
     window.localStorage.clear();
     this.router.navigate(["/login"]);
+  }
+
+  countCart() {
+    let n = list().length;
+    console.log(n);
+    if (n == null) {
+      this.Cart.quantity = 0;
+    } else {
+      this.Cart.quantity = n;
+      console.log(this.Cart.quantity);
+    }
   }
 }
