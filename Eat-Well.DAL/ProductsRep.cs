@@ -1,8 +1,11 @@
 ﻿using Eat_Well.Common.DAL;
 using Eat_Well.Common.Rsp;
 using Eat_Well.DAL.Models;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -133,5 +136,50 @@ namespace Eat_Well.DAL
         #endregion
         //=================================================================
         //=================================================================
+
+        #region -- Search Product --
+        public object searchProductWithPagination(string key, int page, int size)
+        {
+            List<object> res = new List<object>();
+            var cmn = (SqlConnection)Context.Database.GetDbConnection();
+            if (cmn.State == ConnectionState.Closed)
+                cmn.Open();
+            try
+            {
+                SqlDataAdapter da = new SqlDataAdapter();
+                DataSet ds = new DataSet();
+                var cmt = cmn.CreateCommand();
+                cmt.CommandText = "spSel_SearchProduct";
+                cmt.CommandType = CommandType.StoredProcedure;
+                cmt.Parameters.AddWithValue("@key", key);
+                cmt.Parameters.AddWithValue("@page", page);
+                cmt.Parameters.AddWithValue("@size", size);
+                da.SelectCommand = cmt;
+                da.Fill(ds);
+                //kiem tra
+                if (ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        var x = new
+                        {
+                            ProductName = row["ProductName"],
+                            CategoryName = row["CategoryName"],
+                            Description = row["Description"],
+                            Photo = row["Photo"],
+                            IsActive = row["IsActive"],
+                            ProductSlug = row["ProductSlug"],
+                        };
+                        res.Add(x);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                res = null;
+            }
+            return res;
+        }
+        #endregion
     }
 }
