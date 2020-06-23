@@ -138,11 +138,10 @@ export class OrderAdminComponent implements OnInit {
       order_total: Number(this.Order.order_total),
       phone: String(this.Order.phone),
       date: this.Order.date,
-      is_completed: Boolean(this.Order.is_completed),
+      is_completed: this.Order.is_completed,
       shipping_address: String(this.Order.shipping_address),
       description: this.Order.description,
     };
-    console.log(Id);
     console.log(x);
     this.http.put("https://localhost:44317/api/Orders/" + Id, x).subscribe(
       (result) => {
