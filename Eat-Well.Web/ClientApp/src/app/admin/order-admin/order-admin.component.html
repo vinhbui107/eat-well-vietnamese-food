@@ -1,5 +1,5 @@
 <button class="btn btn-primary" (click)="openModal(true, null)">
-  Add New Product
+  Add New Order
 </button>
 <hr />
 <table class="table table-dark" *ngIf="Orders.total_record > 0">
@@ -18,7 +18,13 @@
       <td>{{ ord.id }}</td>
       <td>{{ ord.username }}</td>
       <td>{{ ord.date }}</td>
-      <td>{{ ord.is_completed }}</td>
+      <td>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="checkbox" [ngModel]="false" /> No
+          </label>
+        </div>
+      </td>
       <td>
         <button class="btn btn-info btn-sm" (click)="openModal(false, ord)">
           Edit
@@ -112,7 +118,7 @@
         </div>
         <br />
         <div class="row">
-          <div class="col-4">Date</div>
+          <div class="col-4">Year-Month-Day</div>
           <div class="col-8">
             <input class="form-control" [(ngModel)]="Order.date" />
           </div>
@@ -121,7 +127,11 @@
         <div class="row">
           <div class="col-4">isCompleted</div>
           <div class="col-8">
-            <input class="form-control" [(ngModel)]="Order.is_completed" />
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" [ngModel]="false" /> No
+              </label>
+            </div>
           </div>
         </div>
         <br />
