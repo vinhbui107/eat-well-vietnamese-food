@@ -74,6 +74,15 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        // Search Product
+        [HttpGet("search")]
+        public IActionResult searchProductWithPagination(string key, int page, int size)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.searchProductWithPagination(key, page, size);
+            return Ok(res);
+        }
+
         private readonly ProductsSvc _svc;
     }
 }

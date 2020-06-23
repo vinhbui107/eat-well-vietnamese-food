@@ -21,7 +21,6 @@ import { CategoryDetailComponent } from "./category-detail/category-detail.compo
 import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 import { CartComponent } from "./cart/cart.component";
-import { CheckoutComponent } from "./checkout/checkout.component";
 import { OrderUserComponent } from "./order-user/order-user.component";
 
 import { DashboardComponent } from "./admin/dashboard/dashboard.component";
@@ -53,7 +52,6 @@ import { OrderDetailAdminComponent } from "./admin/order-detail-admin/order-deta
     ProfileComponent,
 
     CartComponent,
-    CheckoutComponent,
 
     ProductDetailComponent,
     CategoryDetailComponent,
