@@ -30,8 +30,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const id = this._Activatedroute.snapshot.paramMap.get("id");
-    console.log(id);
+    let id = window.localStorage.getItem("customerId");
     this.getprofilebyid(id);
   }
 
