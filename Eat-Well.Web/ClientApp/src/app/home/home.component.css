@@ -31,10 +31,10 @@
   border-radius: 5px !important;
 }
 .foodList h1 {
-  font-size: 25px;
-  color: #b30570;
+  font-size: 35px;
+  color: #EA7018;
   position: absolute;
-  line-height: 2;
+  line-height: 1.5;
   border-radius: 5px !important;
   text-align: center;
   letter-spacing: 2px;
@@ -59,6 +59,7 @@
   display: block;
   margin: 20px auto;
 }
+
 .options {
   font-size: 14px;
   color: grey;
@@ -92,11 +93,11 @@
 }
 .buy a i {
   font-size: 25px;
-  color: #a365bc;
+  color: #EA7018;
   z-index: 5;
 }
 .buy a i:hover {
-  color: #a365bc !important;
+  color: #d45b0a !important;
 }
 .box:hover .buy {
   display: block;
@@ -107,7 +108,7 @@
   justify-content: space-between;
   border-radius: 10px;
   margin: 60px 0px;
-  border: 2px solid #a365bc;
+  border: 2px solid #EA7018;
 }
 .newsletter h4 {
   position: relative;
@@ -132,11 +133,10 @@
   overflow: hidden;
   transition: 0.3s;
   border-radius: 10px;
+  cursor: pointer;
 }
-
 .box a:hover {
-  border: 2px solid #a365bc;
-  position: absolute !important;
+  border: 1px solid #EA7018;
   transition-delay: 0.4s;
 }
 .box a span {
@@ -148,7 +148,7 @@
   left: -100%;
   width: 100%;
   height: 3px;
-  background: linear-gradient(90deg, transparent, #a365bc);
+  background: linear-gradient(90deg, transparent, #EA7018);
 }
 .box a:hover span:nth-child(1) {
   left: 100%;
@@ -159,7 +159,7 @@
   right: -100%;
   width: 100%;
   height: 3px;
-  background: linear-gradient(270deg, transparent, #a365bc);
+  background: linear-gradient(270deg, transparent, #EA7018);
 }
 .box a:hover span:nth-child(3) {
   right: 100%;
@@ -171,7 +171,7 @@
   right: 0px;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #a365bc);
+  background: linear-gradient(180deg, transparent, #EA7018);
 }
 .box a:hover span:nth-child(2) {
   top: 100%;

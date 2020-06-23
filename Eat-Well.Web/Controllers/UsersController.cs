@@ -93,5 +93,14 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
         private readonly UsersSvc _svc;
+
+        //get order by user 
+        [HttpGet("get-order-with-userId/{Id}")]
+        public IActionResult getOrderWithUserId(int Id)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getOrderWithUserId(Id);
+            return Ok(res);
+        }
     }
 }

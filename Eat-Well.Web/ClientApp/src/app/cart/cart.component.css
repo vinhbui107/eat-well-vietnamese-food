@@ -266,10 +266,10 @@ button.btn.btn-lg.btn-block.btn-round.btn-d {
   padding: 1.5%;
   border: none;
   cursor: pointer;
-  background-color: #A365BC;
+  background-color: #EA7018;
 }
 .btnSubmit:hover{
-  background-color:#744388 ;
+  background-color:#df6107 ;
 }
 
 .wrap-flex {

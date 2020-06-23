@@ -232,5 +232,12 @@ namespace Eat_Well.BLL
         //===========================================================
         //===========================================================
 
+        #region -- get Order With UserId --
+        public object getOrderWithUserId(int userid)
+        {
+            return _rep.getOrderWithUserId(userid);
+        }
+        #endregion
+
     }
 }
