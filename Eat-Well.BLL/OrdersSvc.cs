@@ -166,5 +166,13 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
+
+        #region -- get Revenue With Month --
+        public object getRevenueWithMonth(int month, int year)
+        {
+            return _rep.getRevenueWithMonth(month, year);
+        }
+        #endregion
     }
 }

@@ -69,6 +69,15 @@ namespace Eat_Well.Web.Controllers
             return Ok(res);
         }
 
+        //get revenue 
+        [HttpGet("get-revenue-with-month")]
+        public IActionResult getRevenueWithMonth(int month, int year)
+        {
+            var res = new SingleRsp();
+            res.Data = _svc.getRevenueWithMonth(month, year);
+            return Ok(res);
+        }
+
         private readonly OrdersSvc _svc;
     }
 }
