@@ -303,5 +303,12 @@ namespace Eat_Well.BLL
         #endregion
         //===========================================================
         //===========================================================
+
+        #region --Searh Product--
+        public object searchProductWithPagination(string key, int page, int size)
+        {
+            return _rep.searchProductWithPagination(key, page, size);
+        }
+        #endregion
     }
 }
