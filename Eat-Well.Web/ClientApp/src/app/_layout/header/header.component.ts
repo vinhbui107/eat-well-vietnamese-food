@@ -27,6 +27,9 @@ export class HeaderComponent implements OnInit {
     quantity: 0,
   };
 
+  search: any = {
+    key: "",
+  };
   isLogin: boolean = false;
 
   constructor(
@@ -105,5 +108,9 @@ export class HeaderComponent implements OnInit {
     } else {
       this.Cart.quantity = n;
     }
+  }
+
+  searchProduct() {
+    window.localStorage.setItem("key", this.search.key);
   }
 }
