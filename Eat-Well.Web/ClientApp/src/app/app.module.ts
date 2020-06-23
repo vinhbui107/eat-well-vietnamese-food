@@ -29,10 +29,13 @@ import { UserAdminComponent } from "./admin/user-admin/user-admin.component";
 import { ProductAdminComponent } from "./admin/product-admin/product-admin.component";
 import { OrderAdminComponent } from "./admin/order-admin/order-admin.component";
 
-import { routing } from "./app.routing";
 import { HttpClientModule } from "@angular/common/http";
-import { ProductOptionAdminComponent } from './admin/product-option-admin/product-option-admin.component';
-import { RevenueAdminComponent } from './admin/revenue-admin/revenue-admin.component';
+import { ProfileComponent } from "./profile/profile.component";
+import { ProductOptionAdminComponent } from "./admin/product-option-admin/product-option-admin.component";
+import { RevenueAdminComponent } from "./admin/revenue-admin/revenue-admin.component";
+
+import { routing } from "./app.routing";
+import { OrderDetailAdminComponent } from "./admin/order-detail-admin/order-detail-admin.component";
 
 @NgModule({
   imports: [BrowserModule, FormsModule, routing, HttpClientModule],
@@ -47,6 +50,7 @@ import { RevenueAdminComponent } from './admin/revenue-admin/revenue-admin.compo
 
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
 
     CartComponent,
     CheckoutComponent,
@@ -64,6 +68,7 @@ import { RevenueAdminComponent } from './admin/revenue-admin/revenue-admin.compo
     OrderAdminComponent,
     ProductOptionAdminComponent,
     RevenueAdminComponent,
+    OrderDetailAdminComponent,
   ],
   bootstrap: [AppComponent],
 })
