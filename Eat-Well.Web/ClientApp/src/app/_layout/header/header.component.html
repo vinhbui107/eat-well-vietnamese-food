@@ -50,7 +50,7 @@
               aria-labelledby="dropdownMenu1"
               *ngIf="Categories.total_record > 0"
             >
-              <li 
+              <li
                 *ngFor="let cate of Categories.data"
                 (click)="getbyid(cate.id)"
               >
@@ -83,7 +83,7 @@
           </li>
           <li class="nav-item ml-2">
             <a class="nav-link" [routerLink]="['/cart']">
-              <i class="fas fa-shopping-cart"></i>
+              <i class="fas fa-shopping-cart"></i>{{ Cart.quantity }}
             </a>
           </li>
           <li class="nav-item" *ngIf="!isLogin">
@@ -114,7 +114,9 @@
 
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
               <li>
-                Cập nhật thông tin
+                <a style="color: black;" [routerLink]="['/profile']"
+                  >Cập nhật thông tin</a
+                >
               </li>
               <li>
                 <a (click)="logout()" style="color: black;">Đăng xuất</a>
