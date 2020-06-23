@@ -163,12 +163,13 @@ namespace Eat_Well.DAL
                     {
                         var x = new
                         {
-                            ProductName = row["ProductName"],
-                            CategoryName = row["CategoryName"],
-                            Description = row["Description"],
-                            Photo = row["Photo"],
-                            IsActive = row["IsActive"],
-                            ProductSlug = row["ProductSlug"],
+                            id = row["ProductId"],
+                            name = row["ProductName"],
+                            category_name = row["CategoryName"],
+                            description = row["Description"],
+                            photo = row["Photo"],
+                            is_active = row["IsActive"],
+                            slug = row["ProductSlug"],
                         };
                         res.Add(x);
                     }
