@@ -100,12 +100,10 @@ export class HeaderComponent implements OnInit {
 
   countCart() {
     let n = list().length;
-    console.log(n);
     if (n == null) {
       this.Cart.quantity = 0;
     } else {
       this.Cart.quantity = n;
-      console.log(this.Cart.quantity);
     }
   }
 }
