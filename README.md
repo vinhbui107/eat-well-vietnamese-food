@@ -13,17 +13,6 @@
 - Add to cart and checkout.
 - Admin page for manage products, orders, users.
 - Monthly revenue statistics and reports in admin page.
-## Tasks
-- #### **Bùi Thế Vinh:** 
-  - 
-- #### **Lê Thiên Bảo:**
-  - 
-- #### **Dương Thanh Bình:**
-  - 
-- #### **Quách Triển Huy:**
-  - 
-- #### **Huỳnh Anh Khoa:**
-  - 
 
 
 
