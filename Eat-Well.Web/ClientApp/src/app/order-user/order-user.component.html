@@ -1,1 +1,24 @@
-<p>order-user works!</p>
+<table class="table table-dark">
+  <thead>
+    <tr>
+
+      <th scope="col">Sản phẩm</th>
+      <th scope="col">Số lượng</th>
+      <th scope="col">Giá</th>
+      <th scope="col">Tổng giá</th>
+      <th scope="col">Ngày/Tháng/Năm</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ou of OrderUser">
+
+      <td>{{ ou.productName }}</td>
+      <td>{{ ou.quantity }}</td>
+      <td>{{ ou.price }}</td>
+      <td>{{ ou.orderTotal }}</td>
+      <td>{{ ou.orderDate }}</td>
+
+    </tr>
+  </tbody>
+</table>

@@ -22,6 +22,7 @@ import { OrderUserComponent } from "./order-user/order-user.component";
 import { OrderAdminComponent } from "./admin/order-admin/order-admin.component";
 import { ProductOptionAdminComponent } from "./admin/product-option-admin/product-option-admin.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { RevenueAdminComponent } from "./admin/revenue-admin/revenue-admin.component";
 
 const appRoutes: Routes = [
   //Site routes goes here
@@ -53,6 +54,7 @@ const appRoutes: Routes = [
       { path: "products", component: ProductAdminComponent },
       { path: "orders", component: OrderAdminComponent },
       { path: "options", component: ProductOptionAdminComponent },
+      { path: "revenue", component: RevenueAdminComponent },
     ],
   },
 

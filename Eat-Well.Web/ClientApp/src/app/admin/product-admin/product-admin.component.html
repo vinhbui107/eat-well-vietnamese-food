@@ -135,21 +135,21 @@
             <p></p>
           </div>
         </div>
-        <div class="row" *ngFor="let product of Product.options">
+        <!-- <div class="row" *ngFor="let product of Product.options">
           <div class="col-4">{{ product.name }}</div>
 
           <div class="col-8">
             <input class="form-control" [(ngModel)]="product.price" />
             <p></p>
           </div>
-        </div>
+        </div> -->
         <br />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">
           Close
         </button>
-        <button 
+        <button
           type="button"
           class="btn btn-primary"
           (click)="saveProduct(Product.id)"
