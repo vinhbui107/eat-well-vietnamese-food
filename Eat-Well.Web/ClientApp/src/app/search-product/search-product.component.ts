@@ -1,10 +1,10 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 @Component({
   selector: "app-search-product",
   templateUrl: "./search-product.component.html",
-  styleUrls: ["./search-product.component.css"],
+  styleUrls: ["../home/home.component.css"],
 })
 export class SearchProductComponent implements OnInit {
   Category: any = {
@@ -12,6 +12,9 @@ export class SearchProductComponent implements OnInit {
     name: String,
     slug: String,
     products: [],
+  };
+  searchProducts: any = {
+    data: [],
   };
 
   constructor(
@@ -27,12 +30,16 @@ export class SearchProductComponent implements OnInit {
 
   getbykey() {
     let key = window.localStorage.getItem("key");
+    let params = new HttpParams()
+      .set("key", key)
+      .set("page", "1")
+      .set("size", "10");
     this.http
-      .get("https://localhost:44317/api/Products/search" + key)
+      .get("https://localhost:44317/api/Products/search", { params })
       .subscribe(
         (result) => {
-          this.Category = result;
-          this.Category = this.Category.data[0];
+          this.searchProducts = result;
+          this.searchProducts = this.searchProducts.data;
         },
         (error) => console.error(error)
       );
