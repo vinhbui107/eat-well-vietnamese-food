@@ -1,11 +1,11 @@
 # Eat Well Vietnamese Food Website
 
 ## Members
-- Bùi Thế Vinh (Leader) - 1751040102
-- Lê Thiên Bảo          - 
-- Dương Thanh Bình      - 
-- Quách Triển Huy       - 
-- Huỳnh Anh Khoa        - 
+- Bùi Thế Vinh
+- Lê Thiên Bảo
+- Dương Thanh Bình
+- Quách Triển Huy
+- Huỳnh Anh Khoa
 ## About this project
 
 ## Features
