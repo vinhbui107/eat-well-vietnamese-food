@@ -2,8 +2,6 @@
 
 My assignment for Database Programming 🪐.
 
-## About this project
-
 ## Features
 - Login and register account.
 - Add to cart and checkout.
