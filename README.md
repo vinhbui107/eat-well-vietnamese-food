@@ -1,11 +1,7 @@
 # Eat Well Vietnamese Food Website
 
-## Members
-- Bùi Thế Vinh
-- Lê Thiên Bảo
-- Dương Thanh Bình
-- Quách Triển Huy
-- Huỳnh Anh Khoa
+My assignment for Database Programming 🪐.
+
 ## About this project
 
 ## Features
